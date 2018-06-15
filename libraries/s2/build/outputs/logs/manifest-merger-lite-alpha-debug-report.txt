@@ -1,0 +1,35 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /Users/ljeongseok/Downloads/kakao-android-sdk-project-1/libraries/s2/src/main/AndroidManifest.xml:1:1-2:12
+INJECTED from /Users/ljeongseok/Downloads/kakao-android-sdk-project-1/libraries/s2/src/main/AndroidManifest.xml:1:1-2:12
+INJECTED from /Users/ljeongseok/Downloads/kakao-android-sdk-project-1/libraries/s2/src/main/AndroidManifest.xml:1:1-2:12
+INJECTED from /Users/ljeongseok/Downloads/kakao-android-sdk-project-1/libraries/s2/src/main/AndroidManifest.xml:1:1-2:12
+INJECTED from /Users/ljeongseok/Downloads/kakao-android-sdk-project-1/libraries/s2/src/main/AndroidManifest.xml:1:1-2:12
+INJECTED from /Users/ljeongseok/Downloads/kakao-android-sdk-project-1/libraries/s2/src/main/AndroidManifest.xml:1:1-2:12
+INJECTED from /Users/ljeongseok/Downloads/kakao-android-sdk-project-1/libraries/s2/src/main/AndroidManifest.xml:1:1-2:12
+	package
+		ADDED from /Users/ljeongseok/Downloads/kakao-android-sdk-project-1/libraries/s2/src/main/AndroidManifest.xml:1:11-33
+		INJECTED from /Users/ljeongseok/Downloads/kakao-android-sdk-project-1/libraries/s2/src/main/AndroidManifest.xml
+		INJECTED from /Users/ljeongseok/Downloads/kakao-android-sdk-project-1/libraries/s2/src/main/AndroidManifest.xml
+	android:versionName
+		INJECTED from /Users/ljeongseok/Downloads/kakao-android-sdk-project-1/libraries/s2/src/main/AndroidManifest.xml
+		ADDED from /Users/ljeongseok/Downloads/kakao-android-sdk-project-1/libraries/s2/src/main/AndroidManifest.xml:1:1-2:12
+		INJECTED from /Users/ljeongseok/Downloads/kakao-android-sdk-project-1/libraries/s2/src/main/AndroidManifest.xml
+	android:versionCode
+		INJECTED from /Users/ljeongseok/Downloads/kakao-android-sdk-project-1/libraries/s2/src/main/AndroidManifest.xml
+		ADDED from /Users/ljeongseok/Downloads/kakao-android-sdk-project-1/libraries/s2/src/main/AndroidManifest.xml:1:1-2:12
+		INJECTED from /Users/ljeongseok/Downloads/kakao-android-sdk-project-1/libraries/s2/src/main/AndroidManifest.xml
+uses-sdk
+INJECTED from /Users/ljeongseok/Downloads/kakao-android-sdk-project-1/libraries/s2/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /Users/ljeongseok/Downloads/kakao-android-sdk-project-1/libraries/s2/src/main/AndroidManifest.xml
+INJECTED from /Users/ljeongseok/Downloads/kakao-android-sdk-project-1/libraries/s2/src/main/AndroidManifest.xml
+INJECTED from /Users/ljeongseok/Downloads/kakao-android-sdk-project-1/libraries/s2/src/main/AndroidManifest.xml
+INJECTED from /Users/ljeongseok/Downloads/kakao-android-sdk-project-1/libraries/s2/src/main/AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from /Users/ljeongseok/Downloads/kakao-android-sdk-project-1/libraries/s2/src/main/AndroidManifest.xml
+		ADDED from /Users/ljeongseok/Downloads/kakao-android-sdk-project-1/libraries/s2/src/main/AndroidManifest.xml
+		INJECTED from /Users/ljeongseok/Downloads/kakao-android-sdk-project-1/libraries/s2/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /Users/ljeongseok/Downloads/kakao-android-sdk-project-1/libraries/s2/src/main/AndroidManifest.xml
+		ADDED from /Users/ljeongseok/Downloads/kakao-android-sdk-project-1/libraries/s2/src/main/AndroidManifest.xml
+		INJECTED from /Users/ljeongseok/Downloads/kakao-android-sdk-project-1/libraries/s2/src/main/AndroidManifest.xml

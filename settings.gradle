@@ -1,0 +1,7 @@
+include ':app'
+
+include ':libraries:auth'
+include ':libraries:network'
+include ':libraries:s2'
+include ':libraries:usermgmt'
+include ':libraries:util'

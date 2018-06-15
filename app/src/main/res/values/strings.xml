@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">League</string>
+    <string name="kakao_app_key">16b0b8c1c262c22e0e4683d9bc10a398</string>
+    <string name="kakao_client_secret">hqA2xUMiZegRzOTL0hFXecbQU5Xfh5UH</string>
+    <string name="facebook_app_id">1034377506725144</string>
+    <string name="fb_login_protocol_scheme">fb1034377506725144</string>
+    <string name="naver_client_id">Hkg6d2gPRRpivP62KoqG</string>
+    <string name="naver_client_secret">bO43bNXDaY</string>
+    <string name="drawer_open">drawer open</string>
+    <string name="drawer_close">drawer close</string>
+    <string name="delete_whole_search_keyword">검색어 전체 삭제</string>
+    <string name="cancel">취소</string>
+    <string name="tab_home">홈</string>
+    <string name="tab_match">매치신청</string>
+    <string name="tab_team">팀리스트</string>
+    <string name="tab_victory">승부예측</string>
+    <string name="tab_noti">알림</string>
+</resources>
