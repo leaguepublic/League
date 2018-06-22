@@ -30,7 +30,7 @@ public class RecentKeywordListAdapter extends RecyclerView.Adapter {
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new KeywordViewHolder(View.inflate(mContext, R.layout.recent_keyword_list_item, null));
+        return new KeywordViewHolder(View.inflate(mContext, R.layout.recent_keyword_list_item, parent));
     }
 
     @Override
