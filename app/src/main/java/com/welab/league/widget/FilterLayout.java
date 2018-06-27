@@ -10,16 +10,26 @@ import android.view.animation.AnimationUtils;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.welab.league.R;
 
 import java.util.ArrayList;
 
 public class FilterLayout extends ConstraintLayout {
-    private final int MAX_ROW_COUNT = 3;
+    private final int MAX_ROW_COUNT = 4;
+    private final int SELECT_MAX_COUNT = 3;
 
-    private static Animation mUpAnim;
-    private static Animation mDimAnim;
+    private Animation mUpAnim;
+    private Animation mDownAnim;
+    private Animation mDimAnim;
+
+    private View mLocalNameMenuView;
+    private View mDimView;
+
+    private ArrayList<String> mSelectedLocalNameList;
+
+    OnClickListener mOkOnClickListener;
 
     public FilterLayout(Context context) {
         super(context);
@@ -33,10 +43,34 @@ public class FilterLayout extends ConstraintLayout {
         super(context, attrs, defStyleAttr);
     }
 
-    public void setData(ArrayList<String> localNameList, final ArrayList<String> SELECTED_LOCAL_NAME_LIST) {
+    @Override
+    protected void onFinishInflate() {
+        super.onFinishInflate();
+
+        findViewById(R.id.cancel_button).setOnClickListener(view -> {
+            close();
+        });
+
+        findViewById(R.id.ok_button).setOnClickListener(view -> {
+            mOkOnClickListener.onClick(view);
+            
+            startSlideDownAnim(getContext());
+        });
+
+        mLocalNameMenuView = findViewById(R.id.menu_layout);
+        mDimView = findViewById(R.id.dim_imageview);
+    }
+
+    public void setOkButtonListener(OnClickListener onClickListener) {
+        mOkOnClickListener = onClickListener;
+    }
+
+    public void setData(ArrayList<String> localNameList, ArrayList<String> selectedLocalNameList) {
         LinearLayout localNameContainer = findViewById(R.id.local_name_container);
         LinearLayout rowLayout = null;
         CheckBox localNameCheckBox = null;
+
+        mSelectedLocalNameList = selectedLocalNameList;
 
         for (int i = 0; i < localNameList.size(); i++) {
             if (i % MAX_ROW_COUNT == 0) {
@@ -46,36 +80,105 @@ public class FilterLayout extends ConstraintLayout {
 
             localNameCheckBox = (CheckBox) LayoutInflater.from(getContext()).inflate(R.layout.local_name_layout, rowLayout, false);
             localNameCheckBox.setText(localNameList.get(i));
-            localNameCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-                @Override
-                public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
-                    if (isChecked == true) {
-                        SELECTED_LOCAL_NAME_LIST.add(compoundButton.getText().toString());
-                    } else {
-                        SELECTED_LOCAL_NAME_LIST.remove(compoundButton.getText().toString());
-                    }
-                }
-            });
+            localNameCheckBox.setOnCheckedChangeListener(mLocalNameOnCheckedChangeListener);
 
             rowLayout.addView(localNameCheckBox);
         }
 
-        startAnim(getContext(), this);
+        startSlideupAnim(getContext(), this);
     }
 
-    private void startAnim(Context context, View rootView) {
-        View slidingUpview = rootView.findViewById(R.id.menu_layout);
-        View dimView = rootView.findViewById(R.id.dim_imageview);
-
-        if (mUpAnim == null) {
-            mUpAnim = AnimationUtils.loadAnimation(context, R.anim.slide_up);
-        }
-
-        if (mDimAnim == null) {
-            mDimAnim = AnimationUtils.loadAnimation(context, R.anim.fade_in_dim);
-        }
-
-        dimView.startAnimation(mDimAnim);
-        slidingUpview.startAnimation(mUpAnim);
+    public void close() {
+        mSelectedLocalNameList.clear();
+        startSlideDownAnim(getContext());
     }
+
+    private void startSlideupAnim(Context context, View rootView) {
+        mUpAnim = AnimationUtils.loadAnimation(context, R.anim.slide_up);
+        mUpAnim.setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {
+                mLocalNameMenuView.setVisibility(View.VISIBLE);
+            }
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+
+            }
+        });
+
+        mDimAnim = AnimationUtils.loadAnimation(context, R.anim.fade_in_dim);
+        mDimAnim.setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {
+                mDimView.setVisibility(View.VISIBLE);
+            }
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+
+            }
+        });
+
+        mDimView.startAnimation(mDimAnim);
+        mLocalNameMenuView.startAnimation(mUpAnim);
+    }
+
+    private void startSlideDownAnim(Context context) {
+        mDimAnim = AnimationUtils.loadAnimation(context, R.anim.fade_in_dim);
+        mDimAnim.setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {}
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+                mDimView.setVisibility(View.INVISIBLE);
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {}
+        });
+
+        mDownAnim = AnimationUtils.loadAnimation(context, R.anim.slide_down);
+        mDownAnim.setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {}
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+                mLocalNameMenuView.setVisibility(View.INVISIBLE);
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {}
+        });
+    }
+
+    private CompoundButton.OnCheckedChangeListener mLocalNameOnCheckedChangeListener = new CompoundButton.OnCheckedChangeListener() {
+        @Override
+        public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
+            if (isChecked == true) {
+                if (mSelectedLocalNameList.size() < SELECT_MAX_COUNT) {
+                    mSelectedLocalNameList.add(compoundButton.getText().toString());
+                } else {
+                    Toast.makeText(getContext(), R.string.select_local_subtitle, Toast.LENGTH_SHORT);
+                    compoundButton.setOnCheckedChangeListener(null);
+                    compoundButton.setChecked(false);
+                    compoundButton.setOnCheckedChangeListener(mLocalNameOnCheckedChangeListener);
+                }
+            } else {
+                mSelectedLocalNameList.remove(compoundButton.getText().toString());
+            }
+        }
+    };
 }

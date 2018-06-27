@@ -2,7 +2,6 @@ package com.welab.league.adapter.holder;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,8 +31,6 @@ public class LocalFilterViewHolder extends RecyclerView.ViewHolder {
         itemView.findViewById(R.id.filter_view).setOnClickListener(view -> {
             if (itemView.getContext() instanceof OnCallViewListener) {
                 ((OnCallViewListener) itemView.getContext()).onCallView(OnCallViewListener.VIEW_TYPE.LOCAL_NAME_MENU);
-            } else {
-                Log.e("TAG", "LJS== !!!!!!!");
             }
         });
 

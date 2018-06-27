@@ -22,12 +22,16 @@ import com.welab.league.R;
 import com.welab.league.adapter.MainTabFragmentPagerAdapter;
 import com.welab.league.factory.TabFactory;
 import com.welab.league.listener.OnCallViewListener;
+import com.welab.league.widget.FilterLayout;
+
+import java.util.ArrayList;
 
 public class LeagueMainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, OnCallViewListener {
 
     private DrawerLayout mSlidingMenu;
     private ViewPager mViewPager;
     private MainTabFragmentPagerAdapter mMainTabFragmentPagerAdapter;
+    private FilterLayout mFilterLayout;
 
     private TabFactory mTabFactory;
 
@@ -72,6 +76,8 @@ public class LeagueMainActivity extends AppCompatActivity implements NavigationV
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        mFilterLayout = (FilterLayout) findViewById(R.id.filter_layout);
     }
 
     @Override
@@ -87,6 +93,7 @@ public class LeagueMainActivity extends AppCompatActivity implements NavigationV
         switch (item.getItemId()) {
             case R.id.menu_my:
                 Log.e("TAG", "LJS== menu MY ==");
+
                 return true;
         }
 
@@ -105,6 +112,20 @@ public class LeagueMainActivity extends AppCompatActivity implements NavigationV
         switch (viewType) {
             case LOCAL_NAME_MENU:
                 Log.e("TAG", "LJS== CAll LOCAL_NAME_MENU ==");
+
+                ArrayList<String > selectLoaclNameList = new ArrayList<>();
+                ArrayList<String> localNameList = new ArrayList<>();
+                localNameList.add("서대문구");
+                localNameList.add("은평구");
+                localNameList.add("서초구");
+                localNameList.add("강남구");
+                localNameList.add("노원구");
+
+                mFilterLayout.setData(localNameList, selectLoaclNameList);
+
+                for (String name : selectLoaclNameList) {
+                    Log.e("TAG", "LJS== name : " + name);
+                }
                 break;
         }
     }
