@@ -3,6 +3,7 @@ package com.welab.league.widget;
 import android.content.Context;
 import android.support.constraint.ConstraintLayout;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.animation.Animation;
@@ -26,6 +27,7 @@ public class FilterLayout extends ConstraintLayout {
 
     private View mLocalNameMenuView;
     private View mDimView;
+    private LinearLayout mLocalNameContainer;
 
     private ArrayList<String> mSelectedLocalNameList;
 
@@ -52,9 +54,9 @@ public class FilterLayout extends ConstraintLayout {
         });
 
         findViewById(R.id.ok_button).setOnClickListener(view -> {
-            mOkOnClickListener.onClick(view);
-            
             startSlideDownAnim(getContext());
+            mOkOnClickListener.onClick(view);
+            mLocalNameContainer.removeAllViews();
         });
 
         mLocalNameMenuView = findViewById(R.id.menu_layout);
@@ -66,7 +68,7 @@ public class FilterLayout extends ConstraintLayout {
     }
 
     public void setData(ArrayList<String> localNameList, ArrayList<String> selectedLocalNameList) {
-        LinearLayout localNameContainer = findViewById(R.id.local_name_container);
+        mLocalNameContainer = findViewById(R.id.local_name_container);
         LinearLayout rowLayout = null;
         CheckBox localNameCheckBox = null;
 
@@ -75,7 +77,7 @@ public class FilterLayout extends ConstraintLayout {
         for (int i = 0; i < localNameList.size(); i++) {
             if (i % MAX_ROW_COUNT == 0) {
                 rowLayout = (LinearLayout) LayoutInflater.from(getContext()).inflate(R.layout.local_name_row_container, this, false);
-                localNameContainer.addView(rowLayout);
+                mLocalNameContainer.addView(rowLayout);
             }
 
             localNameCheckBox = (CheckBox) LayoutInflater.from(getContext()).inflate(R.layout.local_name_layout, rowLayout, false);
@@ -85,12 +87,28 @@ public class FilterLayout extends ConstraintLayout {
             rowLayout.addView(localNameCheckBox);
         }
 
+        int emptyButtonCount = MAX_ROW_COUNT - (localNameList.size() % MAX_ROW_COUNT);
+
+        for (int i = 0; i < emptyButtonCount; i++) {
+            localNameCheckBox = (CheckBox) LayoutInflater.from(getContext()).inflate(R.layout.local_name_layout, rowLayout, false);
+            localNameCheckBox.setVisibility(View.INVISIBLE);
+
+            rowLayout.addView(localNameCheckBox);
+        }
+
         startSlideupAnim(getContext(), this);
     }
 
-    public void close() {
-        mSelectedLocalNameList.clear();
-        startSlideDownAnim(getContext());
+    public boolean close() {
+        boolean isOpened = mLocalNameContainer.getChildCount() > 0;
+
+        if (isOpened == true) {
+            startSlideDownAnim(getContext());
+            mSelectedLocalNameList.clear();
+            mLocalNameContainer.removeAllViews();
+        }
+
+        return isOpened;
     }
 
     private void startSlideupAnim(Context context, View rootView) {
@@ -135,7 +153,7 @@ public class FilterLayout extends ConstraintLayout {
     }
 
     private void startSlideDownAnim(Context context) {
-        mDimAnim = AnimationUtils.loadAnimation(context, R.anim.fade_in_dim);
+        mDimAnim = AnimationUtils.loadAnimation(context, R.anim.fade_out_dim);
         mDimAnim.setAnimationListener(new Animation.AnimationListener() {
             @Override
             public void onAnimationStart(Animation animation) {}
@@ -162,16 +180,20 @@ public class FilterLayout extends ConstraintLayout {
             @Override
             public void onAnimationRepeat(Animation animation) {}
         });
+
+        mDimView.startAnimation(mDimAnim);
+        mLocalNameMenuView.startAnimation(mDownAnim);
     }
 
     private CompoundButton.OnCheckedChangeListener mLocalNameOnCheckedChangeListener = new CompoundButton.OnCheckedChangeListener() {
         @Override
         public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
             if (isChecked == true) {
+                Log.e("TAG", "LJS== mSelectedLocalNameList.size() : " + mSelectedLocalNameList.size());
                 if (mSelectedLocalNameList.size() < SELECT_MAX_COUNT) {
                     mSelectedLocalNameList.add(compoundButton.getText().toString());
                 } else {
-                    Toast.makeText(getContext(), R.string.select_local_subtitle, Toast.LENGTH_SHORT);
+                    Toast.makeText(getContext(), R.string.select_local_subtitle, Toast.LENGTH_SHORT).show();
                     compoundButton.setOnCheckedChangeListener(null);
                     compoundButton.setChecked(false);
                     compoundButton.setOnCheckedChangeListener(mLocalNameOnCheckedChangeListener);

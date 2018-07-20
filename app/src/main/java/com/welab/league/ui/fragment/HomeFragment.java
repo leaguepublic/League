@@ -13,7 +13,7 @@ import android.view.ViewGroup;
 import com.welab.league.R;
 import com.welab.league.adapter.HomeFragmentListAdapter;
 import com.welab.league.api.response.weblab.BaseItemInfo;
-import com.welab.league.api.response.weblab.MatchItemInfo;
+import com.welab.league.api.response.weblab.MatchTeamInfo;
 
 import java.util.ArrayList;
 
@@ -35,7 +35,7 @@ public class HomeFragment extends Fragment {
 
         Log.e("TAG", "LJS== HomeFragment - onCreateView()");
 
-        mHomeItemInfoList.add(new MatchItemInfo());
+        mHomeItemInfoList.add(new MatchTeamInfo());
 
         mHomeFragmentListAdapter = new HomeFragmentListAdapter(getContext(), mHomeItemInfoList);
 

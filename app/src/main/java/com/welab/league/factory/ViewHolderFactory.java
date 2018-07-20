@@ -13,11 +13,12 @@ public class ViewHolderFactory {
 
     public static final int VIEW_TYPE_NONE = -1;
     public static final int VIEW_TYPE_MATCH = 0; // 매치 신청
-    public static final int VIEW_TYPE_VICTORY_PREDICTION = 1; // 승부 예측
-    public static final int VIEW_TYPE_NEW_TEAM = 2; // 신규 팀
-    public static final int VIEW_TYPE_HOT_TEAM = 3; // 요즘 뜨 팀
-    public static final int VIEW_TYPE_TEAM_LIST = 4; // 팀 리스트
-    public static final int VIEW_TUPE_LOCAL_FILTER = 5; // 지역 필터
+    public static final int VIEW_TYPE_MATCH_RESULT_BALLOT = 1; // 승부 예측
+    public static final int VIEW_TYPE_MATCH_RESULT = 2;
+    public static final int VIEW_TYPE_NEW_JOINING_TEAM = 3; // 신규 팀
+    public static final int VIEW_TYPE_RISING_TEAM = 4; // 요즘 뜨 팀
+    public static final int VIEW_TYPE_LEAGUE_RANK = 5; // 리그 순위
+    public static final int VIEW_TUPE_LOCAL_FILTER = 6; // 지역 필터
 
     private static class Singleton {
         private static final ViewHolderFactory INSTANCE = new ViewHolderFactory();
@@ -39,16 +40,19 @@ public class ViewHolderFactory {
                 viewHolder = new MatchViewHolder(context, parent);
                 break;
 
-            case VIEW_TYPE_VICTORY_PREDICTION:
+            case VIEW_TYPE_MATCH_RESULT_BALLOT:
                 break;
 
-            case VIEW_TYPE_NEW_TEAM:
+            case VIEW_TYPE_MATCH_RESULT:
                 break;
 
-            case VIEW_TYPE_HOT_TEAM:
+            case VIEW_TYPE_NEW_JOINING_TEAM:
                 break;
 
-            case VIEW_TYPE_TEAM_LIST:
+            case VIEW_TYPE_RISING_TEAM:
+                break;
+
+            case VIEW_TYPE_LEAGUE_RANK:
                 break;
 
             case VIEW_TUPE_LOCAL_FILTER:
@@ -66,16 +70,19 @@ public class ViewHolderFactory {
             case VIEW_TYPE_MATCH:
                 break;
 
-            case VIEW_TYPE_VICTORY_PREDICTION:
+            case VIEW_TYPE_MATCH_RESULT_BALLOT:
                 break;
 
-            case VIEW_TYPE_NEW_TEAM:
+            case VIEW_TYPE_MATCH_RESULT:
                 break;
 
-            case VIEW_TYPE_HOT_TEAM:
+            case VIEW_TYPE_NEW_JOINING_TEAM:
                 break;
 
-            case VIEW_TYPE_TEAM_LIST:
+            case VIEW_TYPE_RISING_TEAM:
+                break;
+
+            case VIEW_TYPE_LEAGUE_RANK:
                 break;
 
 //            case VIEW_TUPE_LOCAL_FILTER:

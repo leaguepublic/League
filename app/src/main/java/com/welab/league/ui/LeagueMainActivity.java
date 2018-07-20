@@ -81,6 +81,13 @@ public class LeagueMainActivity extends AppCompatActivity implements NavigationV
     }
 
     @Override
+    public void onBackPressed() {
+        if (mFilterLayout == null || mFilterLayout.close() == false) {
+            super.onBackPressed();
+        }
+    }
+
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.header_menu, menu);
@@ -113,19 +120,23 @@ public class LeagueMainActivity extends AppCompatActivity implements NavigationV
             case LOCAL_NAME_MENU:
                 Log.e("TAG", "LJS== CAll LOCAL_NAME_MENU ==");
 
-                ArrayList<String > selectLoaclNameList = new ArrayList<>();
+                final ArrayList<String > SELECT_LOCALNAME_LIST = new ArrayList<>();
                 ArrayList<String> localNameList = new ArrayList<>();
                 localNameList.add("서대문구");
                 localNameList.add("은평구");
                 localNameList.add("서초구");
                 localNameList.add("강남구");
                 localNameList.add("노원구");
+                localNameList.add("성동구");
+                localNameList.add("마포구");
 
-                mFilterLayout.setData(localNameList, selectLoaclNameList);
+                mFilterLayout.setData(localNameList, SELECT_LOCALNAME_LIST);
+                mFilterLayout.setOkButtonListener(view -> {
+                    for (String name : SELECT_LOCALNAME_LIST) {
+                        Log.e("TAG", "LJS== name : " + name);
+                    }
+                });
 
-                for (String name : selectLoaclNameList) {
-                    Log.e("TAG", "LJS== name : " + name);
-                }
                 break;
         }
     }
