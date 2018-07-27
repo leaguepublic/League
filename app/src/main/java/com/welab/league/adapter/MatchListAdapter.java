@@ -4,7 +4,7 @@ import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.ViewGroup;
 
-import com.welab.league.api.response.weblab.BaseItemInfo;
+import com.welab.league.api.weblab.response.BaseItemInfo;
 import com.welab.league.factory.ViewHolderFactory;
 
 import java.util.ArrayList;

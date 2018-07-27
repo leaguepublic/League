@@ -1,19 +1,19 @@
 package com.welab.league.adapter.holder;
 
 import android.content.Context;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
 import com.welab.league.R;
-import com.welab.league.api.response.weblab.LocalFilterItemInfo;
+import com.welab.league.api.weblab.response.LocalFilterItemInfo;
 import com.welab.league.listener.OnCallViewListener;
+import com.welab.league.widget.BaseViewHolder;
 
 import java.util.ArrayList;
 
-public class LocalFilterViewHolder extends RecyclerView.ViewHolder {
+public class LocalFilterViewHolder extends BaseViewHolder<LocalFilterItemInfo> {
 
     private LinearLayout mLocalContainer;
     private View mSearchView;

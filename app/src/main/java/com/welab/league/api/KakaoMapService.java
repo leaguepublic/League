@@ -1,6 +1,6 @@
 package com.welab.league.api;
 
-import com.welab.league.api.response.kakao.keyword.SearchResultByKeyword;
+import com.welab.league.api.kakao.keyword.SearchResultByKeyword;
 
 import retrofit2.Call;
 import retrofit2.http.GET;

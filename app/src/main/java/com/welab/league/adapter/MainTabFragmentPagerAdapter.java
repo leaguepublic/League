@@ -1,13 +1,12 @@
 package com.welab.league.adapter;
 
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentStatePagerAdapter;
+import android.support.v4.app.FragmentPagerAdapter;
 
 import com.welab.league.factory.TabFactory;
 
-public class MainTabFragmentPagerAdapter extends FragmentStatePagerAdapter {
+public class MainTabFragmentPagerAdapter extends FragmentPagerAdapter {
     private TabFactory mTabFactory;
-
 
     public MainTabFragmentPagerAdapter(android.support.v4.app.FragmentManager fm) {
         super(fm);

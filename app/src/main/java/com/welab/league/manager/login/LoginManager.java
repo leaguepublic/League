@@ -4,8 +4,8 @@ import android.app.Activity;
 import android.content.Intent;
 import android.view.View;
 
-import com.welab.league.api.response.weblab.MemberInfo;
-import com.welab.league.manager.api.ApiManager;
+import com.welab.league.api.weblab.response.MemberInfo;
+import com.welab.league.api.ApiManager;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -69,7 +69,7 @@ public class LoginManager {
     }
 
     public void checkMember() {
-        ApiManager.getMemberInfo("", new Callback<MemberInfo>() {
+        ApiManager.getInstance().getMemberInfo(new Callback<MemberInfo>() {
             @Override
             public void onResponse(Call<MemberInfo> call, Response<MemberInfo> response) {
 

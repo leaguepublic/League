@@ -2,34 +2,34 @@ package com.welab.league.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.ViewGroup;
 
 import com.welab.league.api.weblab.response.BaseItemInfo;
 import com.welab.league.factory.ViewHolderFactory;
 
 import java.util.ArrayList;
-import java.util.List;
 
-public class HomeFragmentListAdapter extends RecyclerView.Adapter {
+public class ListViewHolderAdapter extends RecyclerView.Adapter {
 
     private Context mContext;
     private ViewHolderFactory mViewHolderFactory;
 
-    private ArrayList<List<BaseItemInfo>> mItemInfoList;
+    private ArrayList<BaseItemInfo> mListDataList;
 
     // http://trend21c.tistory.com/2021 - Viewpager를 여러개 사용할 경우 setId를 해줘야 함.
 
-    public HomeFragmentListAdapter(Context context, ArrayList<List<BaseItemInfo>> iItemInfoList) {
+    public ListViewHolderAdapter(Context context, ArrayList<BaseItemInfo> matchInfoList) {
         mContext = context;
 
-        mViewHolderFactory = ViewHolderFactory.getInstance();
+        mListDataList = matchInfoList;
 
-        mItemInfoList = iItemInfoList;
+        mViewHolderFactory = ViewHolderFactory.getInstance();
     }
 
     @Override
     public int getItemViewType(int position) {
-        return ViewHolderFactory.VIEW_TYPE_LIST;
+        return mListDataList.get(position).getType();
     }
 
     @Override
@@ -39,15 +39,11 @@ public class HomeFragmentListAdapter extends RecyclerView.Adapter {
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        mViewHolderFactory.setListData(holder, mItemInfoList.get(position));
+        mViewHolderFactory.setData(holder, mListDataList.get(position));
     }
 
     @Override
     public int getItemCount() {
-        if (mItemInfoList == null) {
-            return 0;
-        } else {
-            return mItemInfoList.size();
-        }
+        return mListDataList.size();
     }
 }

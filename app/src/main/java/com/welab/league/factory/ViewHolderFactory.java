@@ -2,23 +2,30 @@ package com.welab.league.factory;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.ViewGroup;
 
+import com.welab.league.adapter.holder.ListViewHolder;
 import com.welab.league.adapter.holder.LocalFilterViewHolder;
-import com.welab.league.adapter.holder.MatchViewHolder;
-import com.welab.league.api.response.weblab.BaseItemInfo;
+import com.welab.league.adapter.holder.MatchResultViewHolder;
+import com.welab.league.adapter.holder.MatchTeamViewHolder;
+import com.welab.league.adapter.holder.NewJoiningTeamViewHolder;
+import com.welab.league.adapter.holder.RisingTeamViewHolder;
+import com.welab.league.widget.BaseViewHolder;
+
+import java.util.List;
 
 public class ViewHolderFactory {
 
     public static final int VIEW_TYPE_NONE = -1;
-    public static final int VIEW_TYPE_MATCH = 0; // 매치 신청
-    public static final int VIEW_TYPE_MATCH_RESULT_BALLOT = 1; // 승부 예측
-    public static final int VIEW_TYPE_MATCH_RESULT = 2;
-    public static final int VIEW_TYPE_NEW_JOINING_TEAM = 3; // 신규 팀
-    public static final int VIEW_TYPE_RISING_TEAM = 4; // 요즘 뜨 팀
-    public static final int VIEW_TYPE_LEAGUE_RANK = 5; // 리그 순위
-    public static final int VIEW_TUPE_LOCAL_FILTER = 6; // 지역 필터
+    public static final int VIEW_TYPE_TABHOME = 0; // 탭 홈
+    public static final int VIEW_TYPE_MATCH = 1; // 매치 신청
+    public static final int VIEW_TYPE_MATCH_RESULT_BALLOT = 2; // 승부 예측
+    public static final int VIEW_TYPE_MATCH_RESULT = 3;
+    public static final int VIEW_TYPE_NEW_JOINING_TEAM = 4; // 신규 팀
+    public static final int VIEW_TYPE_RISING_TEAM = 5; // 요즘 뜨 팀
+    public static final int VIEW_TYPE_LEAGUE_RANK = 6; // 리그 순위
+    public static final int VIEW_TYPE_LOCAL_FILTER = 7; // 지역 필터
+    public static final int VIEW_TYPE_LIST = 8;
 
     private static class Singleton {
         private static final ViewHolderFactory INSTANCE = new ViewHolderFactory();
@@ -31,62 +38,48 @@ public class ViewHolderFactory {
     }
 
     public RecyclerView.ViewHolder get(Context context, ViewGroup parent, int type) {
-        RecyclerView.ViewHolder viewHolder = null;
-
-        Log.e("TAG", "LJS== type : " + type);
+        BaseViewHolder viewHolder = null;
 
         switch (type) {
             case VIEW_TYPE_MATCH:
-                viewHolder = new MatchViewHolder(context, parent);
+                viewHolder = new MatchTeamViewHolder(context, parent);
                 break;
 
             case VIEW_TYPE_MATCH_RESULT_BALLOT:
                 break;
 
             case VIEW_TYPE_MATCH_RESULT:
+                viewHolder = new MatchResultViewHolder(context, parent);
                 break;
 
             case VIEW_TYPE_NEW_JOINING_TEAM:
+                viewHolder = new NewJoiningTeamViewHolder(context, parent);
                 break;
 
             case VIEW_TYPE_RISING_TEAM:
+                viewHolder = new RisingTeamViewHolder(context, parent);
                 break;
 
             case VIEW_TYPE_LEAGUE_RANK:
                 break;
 
-            case VIEW_TUPE_LOCAL_FILTER:
+            case VIEW_TYPE_LOCAL_FILTER:
                 viewHolder = new LocalFilterViewHolder(context, parent);
                 break;
-        }
 
-        Log.e("TAG", "LJS== viewHolder : " + viewHolder);
+            case VIEW_TYPE_LIST:
+                viewHolder = new ListViewHolder(context, parent);
+                break;
+        }
 
         return viewHolder;
     }
 
     public <T> void setData(RecyclerView.ViewHolder viewHolder, T itemInfo) {
-        switch (((BaseItemInfo) itemInfo).getType()) {
-            case VIEW_TYPE_MATCH:
-                break;
+        ((BaseViewHolder) viewHolder).setData(itemInfo);
+    }
 
-            case VIEW_TYPE_MATCH_RESULT_BALLOT:
-                break;
-
-            case VIEW_TYPE_MATCH_RESULT:
-                break;
-
-            case VIEW_TYPE_NEW_JOINING_TEAM:
-                break;
-
-            case VIEW_TYPE_RISING_TEAM:
-                break;
-
-            case VIEW_TYPE_LEAGUE_RANK:
-                break;
-
-//            case VIEW_TUPE_LOCAL_FILTER:
-//                break;
-        }
+    public <T> void setListData(RecyclerView.ViewHolder viewHolder, List<T> itemInfoList) {
+        ((BaseViewHolder) viewHolder).setListData(itemInfoList);
     }
 }

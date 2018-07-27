@@ -7,11 +7,14 @@ import android.util.Log;
 import android.widget.TextView;
 
 import com.welab.league.R;
+import com.welab.league.api.weblab.response.BaseItemInfo;
 import com.welab.league.ui.fragment.HomeFragment;
 import com.welab.league.ui.fragment.MatchFragment;
 import com.welab.league.ui.fragment.NotiFragment;
 import com.welab.league.ui.fragment.TeamFragment;
 import com.welab.league.ui.fragment.VictoryFragment;
+
+import java.util.ArrayList;
 
 public class TabFactory {
     public static final int TAB_INDEX_HOME = 0;
@@ -22,6 +25,8 @@ public class TabFactory {
 
     private int mTabCount;
 
+    private ArrayList<BaseItemInfo> mPageDataList;
+
     private static class Singleton {
         private static final TabFactory INSTANCE = new TabFactory();
     }
@@ -30,6 +35,10 @@ public class TabFactory {
 
     public static TabFactory getInstance () {
         return Singleton.INSTANCE;
+    }
+
+    public void setData(ArrayList<BaseItemInfo> pageDataList) {
+        mPageDataList = pageDataList;
     }
 
     public Fragment getFragment(int tabIndex) {

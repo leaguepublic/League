@@ -155,7 +155,6 @@ public class LeagueMainActivity extends AppCompatActivity implements NavigationV
 
         @Override
         public void onTabReselected(TabLayout.Tab tab) {
-
         }
     };
 }

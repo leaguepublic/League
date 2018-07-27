@@ -100,7 +100,7 @@ public class FilterLayout extends ConstraintLayout {
     }
 
     public boolean close() {
-        boolean isOpened = mLocalNameContainer.getChildCount() > 0;
+        boolean isOpened = mLocalNameContainer == null ? false : mLocalNameContainer.getChildCount() > 0;
 
         if (isOpened == true) {
             startSlideDownAnim(getContext());

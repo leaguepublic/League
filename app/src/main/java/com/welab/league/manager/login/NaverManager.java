@@ -10,7 +10,7 @@ import com.google.gson.Gson;
 import com.nhn.android.naverlogin.OAuthLogin;
 import com.nhn.android.naverlogin.OAuthLoginHandler;
 import com.welab.league.R;
-import com.welab.league.api.response.naver.UserProfile;
+import com.welab.league.api.naver.UserProfile;
 
 class NaverManager extends Manager {
     private static NaverManager mInstance;
