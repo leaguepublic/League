@@ -7,10 +7,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class VictoryFragment extends Fragment {
+public class CategoryFragment extends Fragment {
 
 
-    public VictoryFragment() {
+    public CategoryFragment() {
     }
 
 

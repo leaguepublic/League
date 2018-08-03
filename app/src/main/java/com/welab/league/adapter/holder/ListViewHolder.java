@@ -28,12 +28,13 @@ public class ListViewHolder extends BaseViewHolder<BaseItemInfo> {
     private ArrayList<BaseItemInfo> mListDataList = new ArrayList<>();
 
     public ListViewHolder(Context context, ViewGroup parent) {
-        this(LayoutInflater.from(parent.getContext()).inflate(R.layout.recyclerview_layout_b, parent, false));
+        this(LayoutInflater.from(parent.getContext()).inflate(R.layout.recyclerview_layout, parent, false));
     }
 
     public ListViewHolder(View itemView) {
         super(itemView);
 
+        // ListView 형태
         mListViewHolderAdapter = new ListViewHolderAdapter(itemView.getContext(), mListDataList);
 
         mRecyclerView = (RecyclerView) itemView.findViewById(R.id.item_listview);

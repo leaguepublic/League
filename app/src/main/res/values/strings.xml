@@ -13,7 +13,7 @@
     <string name="tab_home">홈</string>
     <string name="tab_match">매치신청</string>
     <string name="tab_team">팀리스트</string>
-    <string name="tab_victory">승부예측</string>
+    <string name="tab_match_result_ballot">승부예측</string>
     <string name="tab_noti">알림</string>
     <string name="select_local_title">지역 선택</string>
     <string name="select_local_subtitle">중복 선택은 3개까지 가능 합니다.</string>

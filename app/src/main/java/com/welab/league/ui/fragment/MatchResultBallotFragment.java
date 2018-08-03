@@ -12,10 +12,10 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
-public class MatchFragment extends BaseFragment<List<BaseItemInfo>> {
+public class MatchResultBallotFragment extends BaseFragment<List<BaseItemInfo>> {
 
 
-    public MatchFragment() {
+    public MatchResultBallotFragment() {
     }
 
 

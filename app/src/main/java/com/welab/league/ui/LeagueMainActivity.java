@@ -20,11 +20,18 @@ import android.widget.TextView;
 
 import com.welab.league.R;
 import com.welab.league.adapter.MainTabFragmentPagerAdapter;
+import com.welab.league.data.TabInfo;
 import com.welab.league.factory.TabFactory;
 import com.welab.league.listener.OnCallViewListener;
 import com.welab.league.widget.FilterLayout;
 
 import java.util.ArrayList;
+
+import static com.welab.league.factory.TabFactory.TAB_INDEX_HOME;
+import static com.welab.league.factory.TabFactory.TAB_INDEX_MATCH;
+import static com.welab.league.factory.TabFactory.TAB_INDEX_MATCH_RESULT_BALLOT;
+import static com.welab.league.factory.TabFactory.TAB_INDEX_NOTI;
+import static com.welab.league.factory.TabFactory.TAB_INDEX_TEAM;
 
 public class LeagueMainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, OnCallViewListener {
 
@@ -32,8 +39,6 @@ public class LeagueMainActivity extends AppCompatActivity implements NavigationV
     private ViewPager mViewPager;
     private MainTabFragmentPagerAdapter mMainTabFragmentPagerAdapter;
     private FilterLayout mFilterLayout;
-
-    private TabFactory mTabFactory;
 
     public static void open(Context context) {
         context.startActivity(new Intent(context, LeagueMainActivity.class));
@@ -44,20 +49,26 @@ public class LeagueMainActivity extends AppCompatActivity implements NavigationV
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_league_main);
 
-        mTabFactory = TabFactory.getInstance();
+        // Tab
+        // https://stackverflow.com/questions/9172504/how-to-style-the-divider-between-ice-cream-sandwich-tabs - Tab의 Divider를 넣었을 때 이슈 처리
+        // https://stackoverflow.com/questions/30796710/tablayout-tab-selection - Tab 강제 선택 방법
+        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
+
+        ArrayList<TabInfo> tabInfoList = new ArrayList<>();
+        tabInfoList.add(new TabInfo(R.string.tab_home, "", TAB_INDEX_HOME));
+        tabInfoList.add(new TabInfo(R.string.tab_match, "", TAB_INDEX_MATCH));
+        tabInfoList.add(new TabInfo(R.string.tab_team, "", TAB_INDEX_TEAM));
+        tabInfoList.add(new TabInfo(R.string.tab_match_result_ballot, "", TAB_INDEX_MATCH_RESULT_BALLOT));
+        tabInfoList.add(new TabInfo(R.string.tab_noti, "", TAB_INDEX_NOTI));
+
+        TabFactory tabFactory = new TabFactory();
+        tabFactory.setTab(this, tabLayout, tabInfoList);
 
         // https://stackoverflow.com/questions/30923889/flinging-with-recyclerview-appbarlayout
         // 스크롤 이슈.
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
-
-        // Tab
-        // https://stackverflow.com/questions/9172504/how-to-style-the-divider-between-ice-cream-sandwich-tabs - Tab의 Divider를 넣었을 때 이슈 처리
-        // https://stackoverflow.com/questions/30796710/tablayout-tab-selection - Tab 강제 선택 방법
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
-
-        mTabFactory.setTab(this, tabLayout);
 
         mMainTabFragmentPagerAdapter = new MainTabFragmentPagerAdapter(getSupportFragmentManager());
 

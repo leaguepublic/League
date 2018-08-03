@@ -7,7 +7,6 @@ import android.view.ViewGroup;
 import com.welab.league.api.weblab.response.BaseItemInfo;
 import com.welab.league.factory.ViewHolderFactory;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class HomeFragmentListAdapter extends RecyclerView.Adapter {
@@ -15,11 +14,11 @@ public class HomeFragmentListAdapter extends RecyclerView.Adapter {
     private Context mContext;
     private ViewHolderFactory mViewHolderFactory;
 
-    private ArrayList<List<BaseItemInfo>> mItemInfoList;
+    private List<List<BaseItemInfo>> mItemInfoList;
 
     // http://trend21c.tistory.com/2021 - Viewpager를 여러개 사용할 경우 setId를 해줘야 함.
 
-    public HomeFragmentListAdapter(Context context, ArrayList<List<BaseItemInfo>> iItemInfoList) {
+    public HomeFragmentListAdapter(Context context, List<List<BaseItemInfo>> iItemInfoList) {
         mContext = context;
 
         mViewHolderFactory = ViewHolderFactory.getInstance();
@@ -29,7 +28,7 @@ public class HomeFragmentListAdapter extends RecyclerView.Adapter {
 
     @Override
     public int getItemViewType(int position) {
-        return ViewHolderFactory.VIEW_TYPE_LIST;
+        return mViewHolderFactory.getListType(mItemInfoList.get(position));
     }
 
     @Override

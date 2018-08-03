@@ -4,12 +4,15 @@ import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.ViewGroup;
 
+import com.welab.league.adapter.holder.CategoryViewHolder;
 import com.welab.league.adapter.holder.ListViewHolder;
 import com.welab.league.adapter.holder.LocalFilterViewHolder;
 import com.welab.league.adapter.holder.MatchResultViewHolder;
 import com.welab.league.adapter.holder.MatchTeamViewHolder;
 import com.welab.league.adapter.holder.NewJoiningTeamViewHolder;
 import com.welab.league.adapter.holder.RisingTeamViewHolder;
+import com.welab.league.adapter.holder.ViewPagerViewHolder;
+import com.welab.league.api.weblab.response.BaseItemInfo;
 import com.welab.league.widget.BaseViewHolder;
 
 import java.util.List;
@@ -26,6 +29,8 @@ public class ViewHolderFactory {
     public static final int VIEW_TYPE_LEAGUE_RANK = 6; // 리그 순위
     public static final int VIEW_TYPE_LOCAL_FILTER = 7; // 지역 필터
     public static final int VIEW_TYPE_LIST = 8;
+    public static final int VIEW_TYPE_VIEWPAGER = 9;
+    public static final int VIEW_TYPE_CATEGORY = 10;
 
     private static class Singleton {
         private static final ViewHolderFactory INSTANCE = new ViewHolderFactory();
@@ -70,9 +75,40 @@ public class ViewHolderFactory {
             case VIEW_TYPE_LIST:
                 viewHolder = new ListViewHolder(context, parent);
                 break;
+
+            case VIEW_TYPE_VIEWPAGER:
+                viewHolder = new ViewPagerViewHolder(context, parent);
+                break;
+
+            case VIEW_TYPE_CATEGORY:
+                viewHolder = new CategoryViewHolder(context, parent);
+                break;
         }
 
         return viewHolder;
+    }
+
+    public int getListType(List<BaseItemInfo> targetList) {
+        int type = VIEW_TYPE_LIST;
+
+        switch (targetList.get(0).getType()) {
+            case VIEW_TYPE_MATCH:
+            case VIEW_TYPE_LEAGUE_RANK:
+            case VIEW_TYPE_NEW_JOINING_TEAM:
+                type = VIEW_TYPE_LIST;
+                break;
+
+            case VIEW_TYPE_MATCH_RESULT_BALLOT:
+            case VIEW_TYPE_MATCH_RESULT:
+                type = VIEW_TYPE_VIEWPAGER;
+                break;
+
+            case VIEW_TYPE_RISING_TEAM:
+                type = VIEW_TYPE_CATEGORY;
+                break;
+        }
+
+        return type;
     }
 
     public <T> void setData(RecyclerView.ViewHolder viewHolder, T itemInfo) {
