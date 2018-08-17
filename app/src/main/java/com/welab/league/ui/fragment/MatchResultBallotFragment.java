@@ -7,12 +7,13 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.welab.league.api.weblab.response.BaseItemInfo;
+import com.welab.league.widget.BaseFragment;
 
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
-public class MatchResultBallotFragment extends BaseFragment<List<BaseItemInfo>> {
+public class MatchResultBallotFragment extends BaseFragment<BaseItemInfo> {
 
 
     public MatchResultBallotFragment() {
@@ -32,6 +33,6 @@ public class MatchResultBallotFragment extends BaseFragment<List<BaseItemInfo>> 
     }
 
     @Override
-    public void setData(@NotNull List<List<BaseItemInfo>> mutableList) {
+    public void setData(@NotNull List<BaseItemInfo> mutableList) {
     }
 }

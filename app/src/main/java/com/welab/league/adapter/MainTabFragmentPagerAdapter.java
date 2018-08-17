@@ -4,7 +4,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
 
 import com.welab.league.data.TabInfo;
-import com.welab.league.factory.FragmentFactory;
+import com.welab.league.factory.ViewFactory;
 
 import java.util.ArrayList;
 
@@ -20,7 +20,7 @@ public class MainTabFragmentPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        return FragmentFactory.getInstance().getMainTabFragment(position);
+        return ViewFactory.getInstance().getFragment(position);
     }
 
     @Override

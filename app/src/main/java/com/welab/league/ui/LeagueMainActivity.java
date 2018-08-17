@@ -23,15 +23,16 @@ import com.welab.league.adapter.MainTabFragmentPagerAdapter;
 import com.welab.league.data.TabInfo;
 import com.welab.league.factory.TabFactory;
 import com.welab.league.listener.OnCallViewListener;
+import com.welab.league.listener.OnResultListener;
 import com.welab.league.widget.FilterLayout;
 
 import java.util.ArrayList;
 
-import static com.welab.league.factory.TabFactory.TAB_INDEX_HOME;
-import static com.welab.league.factory.TabFactory.TAB_INDEX_MATCH;
-import static com.welab.league.factory.TabFactory.TAB_INDEX_MATCH_RESULT_BALLOT;
-import static com.welab.league.factory.TabFactory.TAB_INDEX_NOTI;
-import static com.welab.league.factory.TabFactory.TAB_INDEX_TEAM;
+import static com.welab.league.factory.ViewFactory.VIEW_TYPE_HOME;
+import static com.welab.league.factory.ViewFactory.VIEW_TYPE_MATCH_RESULT_BALLOT;
+import static com.welab.league.factory.ViewFactory.VIEW_TYPE_MATCH_TEAM;
+import static com.welab.league.factory.ViewFactory.VIEW_TYPE_NEW_JOINING_TEAM;
+import static com.welab.league.factory.ViewFactory.VIEW_TYPE_NOTI;
 
 public class LeagueMainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, OnCallViewListener {
 
@@ -55,11 +56,11 @@ public class LeagueMainActivity extends AppCompatActivity implements NavigationV
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
 
         ArrayList<TabInfo> tabInfoList = new ArrayList<>();
-        tabInfoList.add(new TabInfo(R.string.tab_home, "", TAB_INDEX_HOME));
-        tabInfoList.add(new TabInfo(R.string.tab_match, "", TAB_INDEX_MATCH));
-        tabInfoList.add(new TabInfo(R.string.tab_team, "", TAB_INDEX_TEAM));
-        tabInfoList.add(new TabInfo(R.string.tab_match_result_ballot, "", TAB_INDEX_MATCH_RESULT_BALLOT));
-        tabInfoList.add(new TabInfo(R.string.tab_noti, "", TAB_INDEX_NOTI));
+        tabInfoList.add(new TabInfo(R.string.tab_home, "", VIEW_TYPE_HOME));
+        tabInfoList.add(new TabInfo(R.string.tab_match, "", VIEW_TYPE_MATCH_TEAM));
+        tabInfoList.add(new TabInfo(R.string.tab_team, "", VIEW_TYPE_NEW_JOINING_TEAM));
+        tabInfoList.add(new TabInfo(R.string.tab_match_result_ballot, "", VIEW_TYPE_MATCH_RESULT_BALLOT));
+        tabInfoList.add(new TabInfo(R.string.tab_noti, "", VIEW_TYPE_NOTI));
 
         TabFactory tabFactory = new TabFactory();
         tabFactory.setTab(this, tabLayout, tabInfoList);
@@ -70,7 +71,7 @@ public class LeagueMainActivity extends AppCompatActivity implements NavigationV
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
-        mMainTabFragmentPagerAdapter = new MainTabFragmentPagerAdapter(getSupportFragmentManager());
+        mMainTabFragmentPagerAdapter = new MainTabFragmentPagerAdapter(getSupportFragmentManager(), tabInfoList);
 
         mViewPager = (ViewPager) findViewById(R.id.tab_viewpager);
         mViewPager.setAdapter(mMainTabFragmentPagerAdapter);
@@ -126,11 +127,9 @@ public class LeagueMainActivity extends AppCompatActivity implements NavigationV
     }
 
     @Override
-    public void onCallView(VIEW_TYPE viewType) {
+    public void onCallView(VIEW_TYPE viewType, OnResultListener onResultListener) {
         switch (viewType) {
             case LOCAL_NAME_MENU:
-                Log.e("TAG", "LJS== CAll LOCAL_NAME_MENU ==");
-
                 final ArrayList<String > SELECT_LOCALNAME_LIST = new ArrayList<>();
                 ArrayList<String> localNameList = new ArrayList<>();
                 localNameList.add("서대문구");
@@ -143,9 +142,7 @@ public class LeagueMainActivity extends AppCompatActivity implements NavigationV
 
                 mFilterLayout.setData(localNameList, SELECT_LOCALNAME_LIST);
                 mFilterLayout.setOkButtonListener(view -> {
-                    for (String name : SELECT_LOCALNAME_LIST) {
-                        Log.e("TAG", "LJS== name : " + name);
-                    }
+                    onResultListener.onResult(SELECT_LOCALNAME_LIST);
                 });
 
                 break;

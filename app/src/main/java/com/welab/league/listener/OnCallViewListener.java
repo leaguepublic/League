@@ -5,5 +5,5 @@ public interface OnCallViewListener {
         LOCAL_NAME_MENU
     }
 
-    public void onCallView(VIEW_TYPE viewType);
+    public void onCallView(VIEW_TYPE viewType, OnResultListener onResultListener);
 }

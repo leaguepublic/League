@@ -1,12 +1,12 @@
 package com.welab.league.api.weblab.response
 
-import com.welab.league.factory.ViewHolderFactory
+import com.welab.league.factory.ViewFactory
 import com.welab.league.listener.OnReloadListener
 
-class LocalFilterItemInfo(onReloadListener: OnReloadListener) : BaseItemInfo(){
-    val reloadListener: OnReloadListener = onReloadListener;
+data class LocalFilterItemInfo(val title:String) : BaseItemInfo(){
+    var reloadListener: OnReloadListener? = null
 
     override fun getType(): Int {
-        return ViewHolderFactory.VIEW_TYPE_LOCAL_FILTER
+        return ViewFactory.VIEW_TYPE_LOCAL_FILTER
     }
 }

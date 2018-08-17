@@ -4,4 +4,5 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="app_header_background">#FF083279</color>
+    <color name="divider_color">#FFF0F0F1</color>
 </resources>

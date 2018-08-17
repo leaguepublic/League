@@ -1,4 +1,5 @@
-<resources>
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="app_name">League</string>
     <string name="kakao_app_key">16b0b8c1c262c22e0e4683d9bc10a398</string>
     <string name="kakao_client_secret">hqA2xUMiZegRzOTL0hFXecbQU5Xfh5UH</string>
@@ -15,8 +16,11 @@
     <string name="tab_team">팀리스트</string>
     <string name="tab_match_result_ballot">승부예측</string>
     <string name="tab_noti">알림</string>
+    <string name="more">더 보기</string>
     <string name="select_local_title">지역 선택</string>
     <string name="select_local_subtitle">중복 선택은 3개까지 가능 합니다.</string>
+    <string name="team_stats">%1$s승 %2$s무 %3$s패</string>
+    <string name="new_joinning_team">신규 가입 팀</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

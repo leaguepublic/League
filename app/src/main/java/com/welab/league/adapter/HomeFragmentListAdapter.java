@@ -5,14 +5,14 @@ import android.support.v7.widget.RecyclerView;
 import android.view.ViewGroup;
 
 import com.welab.league.api.weblab.response.BaseItemInfo;
-import com.welab.league.factory.ViewHolderFactory;
+import com.welab.league.factory.ViewFactory;
 
 import java.util.List;
 
 public class HomeFragmentListAdapter extends RecyclerView.Adapter {
 
     private Context mContext;
-    private ViewHolderFactory mViewHolderFactory;
+    private ViewFactory mViewFactory;
 
     private List<List<BaseItemInfo>> mItemInfoList;
 
@@ -21,24 +21,24 @@ public class HomeFragmentListAdapter extends RecyclerView.Adapter {
     public HomeFragmentListAdapter(Context context, List<List<BaseItemInfo>> iItemInfoList) {
         mContext = context;
 
-        mViewHolderFactory = ViewHolderFactory.getInstance();
+        mViewFactory = ViewFactory.getInstance();
 
         mItemInfoList = iItemInfoList;
     }
 
     @Override
     public int getItemViewType(int position) {
-        return mViewHolderFactory.getListType(mItemInfoList.get(position));
+        return mViewFactory.getListType(mItemInfoList.get(position));
     }
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return mViewHolderFactory.get(mContext, parent, viewType);
+        return mViewFactory.getViewHodler(mContext, parent, viewType);
     }
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        mViewHolderFactory.setListData(holder, mItemInfoList.get(position));
+        mViewFactory.setListData(holder, mItemInfoList.get(position));
     }
 
     @Override

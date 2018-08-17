@@ -2,5 +2,6 @@
 <resources>
 
     <dimen name="app_header_height">48dp</dimen>
+    <dimen name="divider_height">9dp</dimen>
 
 </resources>

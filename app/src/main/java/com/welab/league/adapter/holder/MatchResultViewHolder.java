@@ -13,7 +13,7 @@ import com.welab.league.widget.BaseViewHolder;
 public class MatchResultViewHolder extends BaseViewHolder<MatchResult> {
 
     public MatchResultViewHolder(Context context, ViewGroup parent) {
-        this(LayoutInflater.from(parent.getContext()).inflate(R.layout.match_team_info_item, parent, false));
+        this(LayoutInflater.from(parent.getContext()).inflate(R.layout.match_result_item, parent, false));
     }
 
     public MatchResultViewHolder(View itemView) {
@@ -23,6 +23,5 @@ public class MatchResultViewHolder extends BaseViewHolder<MatchResult> {
     @Override
     public void setData(MatchResult matchResult) {
         Log.e("TAG", "LJS== matchResult : " + matchResult);
-
     }
 }

@@ -2,18 +2,17 @@ package com.welab.league.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.ViewGroup;
 
 import com.welab.league.api.weblab.response.BaseItemInfo;
-import com.welab.league.factory.ViewHolderFactory;
+import com.welab.league.factory.ViewFactory;
 
 import java.util.ArrayList;
 
 public class ListViewHolderAdapter extends RecyclerView.Adapter {
 
     private Context mContext;
-    private ViewHolderFactory mViewHolderFactory;
+    private ViewFactory mViewFactory;
 
     private ArrayList<BaseItemInfo> mListDataList;
 
@@ -24,7 +23,7 @@ public class ListViewHolderAdapter extends RecyclerView.Adapter {
 
         mListDataList = matchInfoList;
 
-        mViewHolderFactory = ViewHolderFactory.getInstance();
+        mViewFactory = ViewFactory.getInstance();
     }
 
     @Override
@@ -34,12 +33,12 @@ public class ListViewHolderAdapter extends RecyclerView.Adapter {
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return mViewHolderFactory.get(mContext, parent, viewType);
+        return mViewFactory.getViewHodler(mContext, parent, viewType);
     }
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        mViewHolderFactory.setData(holder, mListDataList.get(position));
+        mViewFactory.setData(holder, mListDataList.get(position));
     }
 
     @Override

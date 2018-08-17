@@ -5,14 +5,14 @@ import android.support.v7.widget.RecyclerView;
 import android.view.ViewGroup;
 
 import com.welab.league.api.weblab.response.BaseItemInfo;
-import com.welab.league.factory.ViewHolderFactory;
+import com.welab.league.factory.ViewFactory;
 
 import java.util.ArrayList;
 
 public class MatchListAdapter extends RecyclerView.Adapter {
 
     private Context mContext;
-    private ViewHolderFactory mViewHolderFactory;
+    private ViewFactory mViewFactory;
 
     private ArrayList<BaseItemInfo> mMatchInfoList;
 
@@ -23,7 +23,7 @@ public class MatchListAdapter extends RecyclerView.Adapter {
 
         mMatchInfoList = matchInfoList;
 
-        mViewHolderFactory = ViewHolderFactory.getInstance();
+        mViewFactory = ViewFactory.getInstance();
     }
 
     @Override
@@ -33,12 +33,12 @@ public class MatchListAdapter extends RecyclerView.Adapter {
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return mViewHolderFactory.get(mContext, parent, viewType);
+        return mViewFactory.getViewHodler(mContext, parent, viewType);
     }
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        mViewHolderFactory.setData(holder, mMatchInfoList.get(position));
+        mViewFactory.setData(holder, mMatchInfoList.get(position));
     }
 
     @Override

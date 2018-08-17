@@ -1,7 +1,7 @@
 package com.welab.league.api.weblab.response.risingteam
 
 import com.welab.league.api.weblab.response.BaseItemInfo
-import com.welab.league.factory.ViewHolderFactory
+import com.welab.league.factory.ViewFactory
 
 data class RisingTeam(var TeamName:String,
                       var TeamEmblemImageUrl:String,
@@ -12,6 +12,6 @@ data class RisingTeam(var TeamName:String,
                       ): BaseItemInfo() {
 
     override fun getType(): Int {
-        return ViewHolderFactory.VIEW_TYPE_RISING_TEAM
+        return ViewFactory.VIEW_TYPE_RISING_TEAM
     }
 }

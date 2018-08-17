@@ -4,13 +4,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="126dp">
 
     <ImageView
         android:layout_width="4dp"
         android:layout_height="match_parent"
         android:layout_marginLeft="25dp"
-        android:background="#FFF4F4F4"/>
+        android:background="#FFF5F5F5"
+        app:layout_constraintLeft_toLeftOf="parent"/>
 
     <ImageView
         android:id="@+id/team_color_imageview"
@@ -19,23 +20,26 @@
         android:layout_marginTop="18dp"
         android:layout_marginLeft="18dp"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintRight_toLeftOf="@+id/body_layout"/>
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/body_layout"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintLeft_toRightOf="@+id/team_color_imageview">
+        android:layout_height="108dp"
+        android:layout_marginTop="18dp"
+        android:layout_marginLeft="10dp"
+        app:layout_constraintLeft_toRightOf="@+id/team_color_imageview"
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:id="@+id/team_name_textview"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
             android:textSize="16dp"
             android:textColor="#FF000000"
-            />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/match_date_textview" />
 
         <TextView
             android:id="@+id/match_date_textview"
@@ -45,7 +49,7 @@
             android:textSize="14dp"
             android:textColor="#FF666666"
             app:layout_constraintTop_toBottomOf="@+id/team_name_textview"
-            />
+            app:layout_constraintLeft_toLeftOf="parent" />
 
         <TextView
             android:id="@+id/matchground_textview"
@@ -53,15 +57,81 @@
             android:layout_height="wrap_content"
             android:textSize="14dp"
             android:textColor="#FF666666"
-            app:layout_constraintLeft_toRightOf="@+id/match_date_textview"/>
+            app:layout_constraintBaseline_toBaselineOf="@+id/match_date_textview"
+            app:layout_constraintLeft_toRightOf="@+id/match_date_textview" />
+
+        <TextView
+            android:id="@+id/team_status_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14dp"
+            android:textColor="#FF666666"
+            app:layout_constraintTop_toBottomOf="@+id/match_date_textview" />
+        
+        <ImageView
+            android:id="@+id/first_divider"
+            android:layout_width="1dp"
+            android:layout_height="22dp"
+            android:background="#FFDBDBDB"
+            app:layout_constraintTop_toBottomOf="@+id/match_date_textview"
+            app:layout_constraintLeft_toRightOf="@+id/team_status_textview"/>
+
+        <TextView
+            android:id="@+id/team_age_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14dp"
+            android:textColor="#FF666666"
+            app:layout_constraintBaseline_toBaselineOf="@+id/team_status_textview"
+            app:layout_constraintLeft_toRightOf="@+id/first_divider"/>
+
+        <ImageView
+            android:id="@+id/second_divider"
+            android:layout_width="1dp"
+            android:layout_height="22dp"
+            android:background="#FFDBDBDB"
+            app:layout_constraintTop_toBottomOf="@+id/match_date_textview"
+            app:layout_constraintLeft_toRightOf="@+id/team_age_textview"/>
+
+        <TextView
+            android:id="@+id/team_type_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14dp"
+            android:textColor="#FF666666"
+            app:layout_constraintBaseline_toBaselineOf="@+id/team_status_textview"
+            app:layout_constraintLeft_toRightOf="@+id/second_divider"/>
+
+        <RatingBar android:id="@+id/team_manner_ratingbar"
+            android:layout_width="75dp"
+            android:layout_height="wrap_content"
+            style="@style/customRatingBar"
+            android:numStars="5"
+            app:layout_constraintTop_toBottomOf="@+id/team_status_textview"
+            app:layout_constraintLeft_toLeftOf="parent"/>
+
+        <TextView
+            android:id="@+id/team_ranking_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14dp"
+            android:textColor="#FF666666"
+            app:layout_constraintTop_toBottomOf="@+id/team_status_textview"
+            app:layout_constraintLeft_toRightOf="@+id/team_manner_ratingbar"/>
     </android.support.constraint.ConstraintLayout>
 
 
     <Button
+        android:id="@+id/match_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="14dp"
-        android:textColor="#FF666666"/>
+        android:textColor="#FF666666"
+        android:layout_marginTop="45dp"
+        android:layout_marginRight="18dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:text="@string/tab_match"/>
 </android.support.constraint.ConstraintLayout>
 
 

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:id="@+id/body_layout"
+        android:layout_width="match_parent"
+        android:layout_height="145dp"
+        android:gravity="center_horizontal">
+
+        <include
+            android:id="@+id/left_team_info_layout"
+            layout="@layout/emblem_teamname_layout"/>
+
+        <TextView
+            android:id="@+id/left_team_point_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="31dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginLeft="6dp"
+            android:gravity="center_vertical"
+            android:textSize="32dp"
+            android:text="5" />
+
+        <ImageView
+            android:id="@+id/match_status_imageview"
+            android:layout_width="44dp"
+            android:layout_height="24dp"
+            android:layout_marginTop="40dp"
+            android:src="@drawable/game_over"
+            android:scaleType="centerInside" />
+
+        <TextView
+            android:id="@+id/right_team_point_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="31dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="6dp"
+            android:gravity="center_vertical"
+            android:textSize="32dp"
+            android:text="5"/>
+
+        <include
+            android:id="@+id/right_team_info_layout"
+            layout="@layout/emblem_teamname_layout"/>
+
+    </LinearLayout>
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/bottom_layout"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:background="#FFF6F6F7"
+        app:layout_constraintTop_toBottomOf="@+id/body_layout"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <ImageView
+            android:id="@+id/divider_imageview"
+            android:layout_width="1dp"
+            android:layout_height="16dp"
+            android:background="#FFCECED0"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <TextView
+            android:id="@+id/match_date_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginRight="5dp"
+            android:gravity="center_vertical|right"
+            app:layout_constraintRight_toLeftOf="@+id/divider_imageview" />
+
+        <TextView
+            android:id="@+id/match_ground_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="5dp"
+            android:gravity="center_vertical|left"
+            app:layout_constraintLeft_toRightOf="@+id/divider_imageview" />
+    </android.support.constraint.ConstraintLayout>
+</android.support.constraint.ConstraintLayout>
+
+

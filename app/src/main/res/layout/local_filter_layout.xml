@@ -7,21 +7,34 @@
     android:layout_height="48dp"
     android:orientation="horizontal">
 
-    <LinearLayout
-        android:id="@+id/local_container"
-        android:layout_width="0dp"
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:paddingLeft="18dp"
-        android:orientation="horizontal">
+        android:layout_weight="1">
 
-    </LinearLayout>
+        <LinearLayout
+            android:id="@+id/local_container"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:paddingLeft="18dp"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/title_textview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="18dp"
+            android:gravity="center_vertical"/>
+    </RelativeLayout>
 
     <ImageButton
         android:id="@+id/filter_view"
         android:layout_width="48dp"
         android:layout_height="match_parent"
-        android:src="@drawable/invalid_name"
+        android:src="@drawable/filter_icon"
         android:background="@null"/>
 
     <ImageView
@@ -34,6 +47,6 @@
         android:id="@+id/search_view"
         android:layout_width="48dp"
         android:layout_height="match_parent"
-        android:src="@drawable/ico"
+        android:src="@drawable/diable_search_icon"
         android:background="@null"/>
 </LinearLayout>

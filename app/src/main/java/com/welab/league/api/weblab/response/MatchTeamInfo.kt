@@ -1,6 +1,6 @@
 package com.welab.league.api.weblab.response
 
-import com.welab.league.factory.ViewHolderFactory
+import com.welab.league.factory.ViewFactory
 
 // https://stackoverflow.com/questions/44117970/kotlin-data-class-from-json-using-gson
 data class MatchTeamInfo(var TeamName:String,
@@ -16,6 +16,6 @@ data class MatchTeamInfo(var TeamName:String,
 ) : BaseItemInfo() {
 
     override fun getType(): Int {
-        return ViewHolderFactory.VIEW_TYPE_MATCH
+        return ViewFactory.VIEW_TYPE_MATCH_TEAM
     }
 }

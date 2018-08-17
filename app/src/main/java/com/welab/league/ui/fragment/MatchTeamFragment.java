@@ -2,15 +2,21 @@ package com.welab.league.ui.fragment;
 
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class CategoryFragment extends Fragment {
+import com.welab.league.api.weblab.response.BaseItemInfo;
+import com.welab.league.widget.BaseFragment;
+
+import org.jetbrains.annotations.NotNull;
+
+import java.util.List;
+
+public class MatchTeamFragment extends BaseFragment<BaseItemInfo> {
 
 
-    public CategoryFragment() {
+    public MatchTeamFragment() {
     }
 
 
@@ -24,5 +30,9 @@ public class CategoryFragment extends Fragment {
     public void onResume() {
         super.onResume();
 
+    }
+
+    @Override
+    public void setData(@NotNull List<BaseItemInfo> mutableList) {
     }
 }
