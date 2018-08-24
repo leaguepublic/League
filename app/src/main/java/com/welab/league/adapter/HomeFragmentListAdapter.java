@@ -2,6 +2,7 @@ package com.welab.league.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.ViewGroup;
 
 import com.welab.league.api.weblab.response.BaseItemInfo;
@@ -33,6 +34,7 @@ public class HomeFragmentListAdapter extends RecyclerView.Adapter {
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        Log.e("TAG", "LJS== viewType : " + viewType);
         return mViewFactory.getViewHodler(mContext, parent, viewType);
     }
 

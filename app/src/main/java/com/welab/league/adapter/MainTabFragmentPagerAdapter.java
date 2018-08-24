@@ -3,19 +3,16 @@ package com.welab.league.adapter;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import com.welab.league.data.TabInfo;
 import com.welab.league.factory.ViewFactory;
-
-import java.util.ArrayList;
 
 public class MainTabFragmentPagerAdapter extends FragmentPagerAdapter {
 
-    private ArrayList<TabInfo> mTabInfoList = new ArrayList<TabInfo>();
+    private int mTabDataCount;
 
-    public MainTabFragmentPagerAdapter(android.support.v4.app.FragmentManager fm, ArrayList<TabInfo> tabInfoList) {
+    public MainTabFragmentPagerAdapter(android.support.v4.app.FragmentManager fm, int tabdataCount) {
         super(fm);
 
-        mTabInfoList = tabInfoList;
+        mTabDataCount = tabdataCount;
     }
 
     @Override
@@ -25,6 +22,6 @@ public class MainTabFragmentPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
-        return mTabInfoList.size();
+        return mTabDataCount;
     }
 }

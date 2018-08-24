@@ -23,6 +23,5 @@ public class RisingTeamViewHolder extends BaseViewHolder<RisingTeam> {
     @Override
     public void setData(RisingTeam risingTeam) {
         Log.e("TAG", "LJS== risingTeam : " + risingTeam);
-
     }
 }

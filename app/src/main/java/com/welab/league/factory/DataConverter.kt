@@ -5,6 +5,7 @@ import com.welab.league.R
 import com.welab.league.api.weblab.response.BaseItemInfo
 import com.welab.league.api.weblab.response.LocalFilterItemInfo
 import com.welab.league.api.weblab.response.MoreInfo
+import com.welab.league.api.weblab.response.RecentKeywordInfo
 
 class DataConverter {
 
@@ -17,12 +18,12 @@ class DataConverter {
             when (dataList.get(0).getType()) {
                 ViewFactory.VIEW_TYPE_MATCH_TEAM -> {
                     fixData(dataList, ViewFactory.VIEW_TYPE_MATCH_TEAM, MAX_COUNT_MATCH_TEAM)
-                    dataList.add(0, LocalFilterItemInfo(context.getString(R.string.tab_match)))
+                    dataList.add(0, LocalFilterItemInfo(context.getString(R.string.tab_match), false, true))
                 }
 
                 ViewFactory.VIEW_TYPE_NEW_JOINING_TEAM -> {
                     fixData(dataList, ViewFactory.VIEW_TYPE_NEW_JOINING_TEAM, MAX_COUNT_NEW_JOINING_TEAM)
-                    dataList.add(0, LocalFilterItemInfo(context.getString(R.string.new_joinning_team)))
+                    dataList.add(0, LocalFilterItemInfo(context.getString(R.string.new_joinning_team), false, false))
                 }
             }
 
@@ -49,6 +50,16 @@ class DataConverter {
                     }
                 }
             }
+        }
+
+        @JvmStatic fun getRecentKeywordList(dataList: MutableList<String>): MutableList<BaseItemInfo> {
+            val converDataList: MutableList<BaseItemInfo> = ArrayList<BaseItemInfo>()
+
+            for (value:String in dataList) {
+                converDataList.add(RecentKeywordInfo(value))
+            }
+
+            return converDataList
         }
     }
 }

@@ -1,7 +1,6 @@
 package com.welab.league.adapter.holder;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -51,8 +50,6 @@ public class MatchTeamViewHolder extends BaseViewHolder<MatchTeamInfo> {
 
     @Override
     public void setData(MatchTeamInfo matchTeamInfo) {
-        Log.e("TAG", "LJS== matchTeamInfo : " + matchTeamInfo);
-
         mMatchButton.setOnClickListener(view -> {
 
         });
@@ -63,7 +60,8 @@ public class MatchTeamViewHolder extends BaseViewHolder<MatchTeamInfo> {
         mTeamStatusTextView.setText(getTeamStats(matchTeamInfo.getTeamStats()));
         mTeamAgeTextView.setText(matchTeamInfo.getTeamAge());
         mTeamTypeTextView.setText(matchTeamInfo.getTeamType());
-        mTeamRankingTextView.setText(matchTeamInfo.getTeamRanking());
+        mTeamRankingTextView.setText(mContext.getString(R.string.team_level, matchTeamInfo.getTeamRanking()));
+        mTeamMannerRatingBar.setRating(3.5f);
     }
 
     private String getTeamStats(List<String> dataList) {

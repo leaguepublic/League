@@ -1,7 +1,6 @@
 package com.welab.league.adapter.holder;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,6 +21,5 @@ public class MatchResultViewHolder extends BaseViewHolder<MatchResult> {
 
     @Override
     public void setData(MatchResult matchResult) {
-        Log.e("TAG", "LJS== matchResult : " + matchResult);
     }
 }

@@ -14,6 +14,7 @@ import com.welab.league.R;
 import com.welab.league.adapter.ListViewHolderAdapter;
 import com.welab.league.api.weblab.response.BaseItemInfo;
 import com.welab.league.api.weblab.response.LocalFilterItemInfo;
+import com.welab.league.data.ReloadData;
 import com.welab.league.factory.ViewFactory;
 import com.welab.league.listener.OnReloadListener;
 import com.welab.league.util.Utils;
@@ -57,8 +58,8 @@ public class ListViewHolder extends BaseViewHolder<BaseItemInfo> {
         if (listDataList.get(0).getType() == ViewFactory.VIEW_TYPE_LOCAL_FILTER) {
             ((LocalFilterItemInfo) listDataList.get(0)).setReloadListener(new OnReloadListener() {
                 @Override
-                public void onReload(List<String> valueList) {
-                    callApi(valueList);
+                public void onReload(ReloadData reloadData) {
+                    callApi(reloadData);
                 }
             });
         }
@@ -68,9 +69,18 @@ public class ListViewHolder extends BaseViewHolder<BaseItemInfo> {
         mListViewHolderAdapter.notifyDataSetChanged();
     }
 
-    private void callApi(List<String> valueList) {
-        Log.e("TAG", "LJS== LocalFilterItemInfo API - value : " + valueList);
-
+    private void callApi(ReloadData reloadData) {
         // mListDataList 여기에 넣으면 됨. 그리고 어댑터 다시 호출
+
+        switch (reloadData.getType()) {
+            case ReloadData.TYPE_SORT:
+                Log.e("TAG", "LJS== Call Api by Sort == " + reloadData.getSortType());
+                break;
+
+            case ReloadData.TYPE_SEARCH_KEYWORD_LIST:
+                Log.e("TAG", "LJS== Call Api by search keyword(localname) == " + reloadData.getSearchKeywordList());
+                break;
+
+        }
     }
 }

@@ -10,8 +10,10 @@ import android.view.View;
 import android.widget.EditText;
 
 import com.welab.league.R;
-import com.welab.league.adapter.RecentKeywordListAdapter;
+import com.welab.league.adapter.SearchResultListAdapter;
+import com.welab.league.api.weblab.response.BaseItemInfo;
 import com.welab.league.db.DbUtils;
+import com.welab.league.factory.DataConverter;
 
 import java.util.List;
 
@@ -20,10 +22,10 @@ public class SearchActivity extends AppCompatActivity {
 
     private DbUtils mDbUtils;
 
-    private List<String> mRecentKeywordList;
+    private List<BaseItemInfo> mRecentKeywordList;
 
-    private RecyclerView mRecentKeywordListView;
-    private RecentKeywordListAdapter mRecentKeywordListAdapter;
+    private RecyclerView mSearchListView;
+    private SearchResultListAdapter mSearchResultListAdapter;
 
     public static void open(Context context) {
         context.startActivity(new Intent(context, SearchActivity.class));
@@ -37,13 +39,13 @@ public class SearchActivity extends AppCompatActivity {
         mSearchEditText = (EditText) findViewById(R.id.search_edittext);
 
         mDbUtils = DbUtils.getInstance(this);
-        mRecentKeywordList = mDbUtils.selectKeywordInfo();
+        mRecentKeywordList = DataConverter.getRecentKeywordList(mDbUtils.selectKeywordInfo());
 
-        mRecentKeywordListAdapter = new RecentKeywordListAdapter(this, mRecentKeywordList);
+        mSearchResultListAdapter = new SearchResultListAdapter(this, mRecentKeywordList);
 
-        mRecentKeywordListView = (RecyclerView) findViewById(R.id.recent_search_keyword_listview);
-        mRecentKeywordListView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
-        mRecentKeywordListView.setAdapter(mRecentKeywordListAdapter);
+        mSearchListView = (RecyclerView) findViewById(R.id.search_listview);
+        mSearchListView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
+        mSearchListView.setAdapter(mSearchResultListAdapter);
     }
 
     public void onClickCancel(View view) {
@@ -57,7 +59,7 @@ public class SearchActivity extends AppCompatActivity {
 
         mRecentKeywordList.clear();
 
-        mRecentKeywordListAdapter.notifyItemRangeRemoved(0, keywordSize);
+        mSearchResultListAdapter.notifyItemRangeRemoved(0, keywordSize);
     }
 
     public void onClickSearch(View view) {
@@ -66,5 +68,6 @@ public class SearchActivity extends AppCompatActivity {
         mDbUtils.insertKeyword(searchKeyword);
 
         // 검색결과 화면
+//        mSearchResultListAdapter.setItemList();
     }
 }

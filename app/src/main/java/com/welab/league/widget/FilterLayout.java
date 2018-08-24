@@ -3,7 +3,6 @@ package com.welab.league.widget;
 import android.content.Context;
 import android.support.constraint.ConstraintLayout;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.animation.Animation;
@@ -82,6 +81,13 @@ public class FilterLayout extends ConstraintLayout {
 
             localNameCheckBox = (CheckBox) LayoutInflater.from(getContext()).inflate(R.layout.local_name_layout, rowLayout, false);
             localNameCheckBox.setText(localNameList.get(i));
+
+            for (String selectedLocalName : mSelectedLocalNameList) {
+                if (localNameList.get(i).equals(selectedLocalName) == true) {
+                    localNameCheckBox.setChecked(true);
+                }
+            }
+
             localNameCheckBox.setOnCheckedChangeListener(mLocalNameOnCheckedChangeListener);
 
             rowLayout.addView(localNameCheckBox);
@@ -104,7 +110,6 @@ public class FilterLayout extends ConstraintLayout {
 
         if (isOpened == true) {
             startSlideDownAnim(getContext());
-            mSelectedLocalNameList.clear();
             mLocalNameContainer.removeAllViews();
         }
 
@@ -189,7 +194,6 @@ public class FilterLayout extends ConstraintLayout {
         @Override
         public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
             if (isChecked == true) {
-                Log.e("TAG", "LJS== mSelectedLocalNameList.size() : " + mSelectedLocalNameList.size());
                 if (mSelectedLocalNameList.size() < SELECT_MAX_COUNT) {
                     mSelectedLocalNameList.add(compoundButton.getText().toString());
                 } else {

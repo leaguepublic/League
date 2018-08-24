@@ -10,6 +10,7 @@
     <string name="drawer_open">drawer open</string>
     <string name="drawer_close">drawer close</string>
     <string name="delete_whole_search_keyword">검색어 전체 삭제</string>
+    <string name="ok">확인</string>
     <string name="cancel">취소</string>
     <string name="tab_home">홈</string>
     <string name="tab_match">매치신청</string>
@@ -20,7 +21,12 @@
     <string name="select_local_title">지역 선택</string>
     <string name="select_local_subtitle">중복 선택은 3개까지 가능 합니다.</string>
     <string name="team_stats">%1$s승 %2$s무 %3$s패</string>
+    <string name="team_level">%1$s레벨</string>
     <string name="new_joinning_team">신규 가입 팀</string>
+    <string name="sort_new_joinning_team">신규 가입 순</string>
+    <string name="sort_high_victory">승률 높은 순</string>
+    <string name="sort_good_manner">매너 좋은 순</string>
+    <string name="sort_high_select_count">조회수 높은 순</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

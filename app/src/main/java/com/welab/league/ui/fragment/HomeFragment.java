@@ -41,13 +41,13 @@ public class HomeFragment extends BaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
         mHomeFragmentListAdapter = new HomeFragmentListAdapter(getContext(), mHomeItemInfoList);
 
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL);
         dividerItemDecoration.setDrawable(Utils.getDrawable(getContext(), R.drawable.recyclerview_main_divider));
 
         View rootView = inflater.inflate(R.layout.recyclerview_layout, container, false);
+
         mHomeListView = (RecyclerView) rootView.findViewById(R.id.item_listview);
         mHomeListView.addItemDecoration(dividerItemDecoration);
         mHomeListView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));

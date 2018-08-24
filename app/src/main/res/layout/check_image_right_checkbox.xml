@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheckedTextView
+    android:id="@+id/tab_title_textview"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="10dp"
+    android:paddingBottom="10dp"
+    android:paddingLeft="14dp"
+    android:gravity="center_vertical"
+    android:layout_marginRight="13dp"
+    android:textColor="@color/sort_text_color"
+    android:textSize="15dp"
+    android:checkMark="@drawable/sort_checkbox_image" />

@@ -10,7 +10,8 @@
     android:clickable="true"
     android:focusableInTouchMode="false"
     android:focusable="false"
-    android:orientation="horizontal">
+    android:orientation="horizontal"
+    android:background="#FFF6F6F7">
 
     <TextView
         android:layout_width="wrap_content"
@@ -22,5 +23,6 @@
     <ImageView
         android:layout_width="40dp"
         android:layout_height="wrap_content"
-        android:scaleType="fitCenter"/>
+        android:scaleType="fitCenter"
+        android:src="@drawable/more_icon"/>
 </LinearLayout>

@@ -3,5 +3,6 @@
 
     <dimen name="app_header_height">48dp</dimen>
     <dimen name="divider_height">9dp</dimen>
+    <dimen name="sort_popup_width">150dp</dimen>
 
 </resources>

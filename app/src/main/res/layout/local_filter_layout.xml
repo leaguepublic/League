@@ -14,8 +14,11 @@
 
         <LinearLayout
             android:id="@+id/local_container"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:gravity="center_vertical|left"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
             android:paddingLeft="18dp"
             android:orientation="horizontal"
             android:visibility="gone">
@@ -38,6 +41,7 @@
         android:background="@null"/>
 
     <ImageView
+        android:id="@+id/divider_imageview"
         android:layout_width="1dp"
         android:layout_height="22dp"
         android:layout_gravity="center_vertical"

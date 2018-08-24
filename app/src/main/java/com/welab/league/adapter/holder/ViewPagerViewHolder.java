@@ -6,6 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.welab.league.R;
@@ -22,6 +24,7 @@ public class ViewPagerViewHolder extends BaseViewHolder<ViewPagerItemInfo> {
     private TextView mTitleTextView;
     private ViewPager mViewPager;
     private ViewPagerAdapter mViewPagerAdapter;
+    private LinearLayout mIndicatorContainView;
 
     private ArrayList<BaseItemInfo> mListDataList = new ArrayList<>();
 
@@ -32,12 +35,26 @@ public class ViewPagerViewHolder extends BaseViewHolder<ViewPagerItemInfo> {
     public ViewPagerViewHolder(View itemView) {
         super(itemView);
 
+        mIndicatorContainView = (LinearLayout) itemView.findViewById(R.id.indicator_container);
+
         mTitleTextView = (TextView) itemView.findViewById(R.id.title_textview);
 
         mViewPagerAdapter = new ViewPagerAdapter(((AppCompatActivity) itemView.getContext()).getSupportFragmentManager(), mListDataList);
 
         mViewPager = (ViewPager) itemView.findViewById(R.id.body_viewpager);
         mViewPager.setAdapter(mViewPagerAdapter);
+        mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {}
+
+            @Override
+            public void onPageSelected(int position) {
+                setIndicator(position);
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {}
+        });
     }
 
     @Override
@@ -45,10 +62,33 @@ public class ViewPagerViewHolder extends BaseViewHolder<ViewPagerItemInfo> {
         mListDataList.clear();
         mListDataList.addAll(listDataList);
 
+        mIndicatorContainView.removeAllViews();
+
+        for (int i = 0; i < listDataList.size(); i++) {
+            mIndicatorContainView.addView(LayoutInflater.from(mIndicatorContainView.getContext()).inflate(R.layout.indicator_icon, mIndicatorContainView, false));
+        }
+
+        setIndicator(0);
+
+        mViewPager.setOffscreenPageLimit(listDataList.size());
+
         if (mViewPagerAdapter != null) {
             mViewPagerAdapter.notifyDataSetChanged();
         }
 
         mTitleTextView.setText(listDataList.get(0).getTitle());
+
+    }
+
+    private void setIndicator(int selectIndex) {
+        int childCount = mIndicatorContainView.getChildCount();
+
+        for (int i = 0; i < childCount; i++) {
+            if (selectIndex == i) {
+                ((ImageView) mIndicatorContainView.getChildAt(i)).setImageResource(R.drawable.indicator_s);
+            } else {
+                ((ImageView) mIndicatorContainView.getChildAt(i)).setImageResource(R.drawable.indicator_n);
+            }
+        }
     }
 }

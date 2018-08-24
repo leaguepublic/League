@@ -43,6 +43,7 @@ public class ViewFactory {
     public static final int VIEW_TYPE_LIST = 11; // List Type
     public static final int VIEW_TYPE_VIEWPAGER = 12; // ViewPager Type
     public static final int VIEW_TYPE_CATEGORY = 13; // Category Type
+    public static final int VIEW_TYPE_RECENT_KEYWORD = 14;
 
     private static class Singleton {
         private static final ViewFactory INSTANCE = new ViewFactory();
@@ -167,6 +168,10 @@ public class ViewFactory {
                 fragment = new MatchResultFragment();
                 break;
             case VIEW_TYPE_RISING_TEAM:
+                fragment = new RisingTeamFragment();
+                break;
+
+            case VIEW_TYPE_CATEGORY:
                 fragment = new RisingTeamFragment();
                 break;
         }

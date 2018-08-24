@@ -5,9 +5,9 @@ import com.welab.league.factory.ViewFactory
 
 data class RisingTeam(var TeamName:String,
                       var TeamEmblemImageUrl:String,
-                      var MatchHistory:String,
+                      var TeamStats:List<String>,
                       var TeamMemberCount:String,
-                      var MeanAge:String,
+                      var TeamAge:String,
                       var GraphInfo:GraphInfo
                       ): BaseItemInfo() {
 

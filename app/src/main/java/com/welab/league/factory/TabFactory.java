@@ -7,17 +7,17 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.welab.league.R;
-import com.welab.league.data.TabInfo;
+import com.welab.league.data.TabData;
 
 import java.util.List;
 
 public class TabFactory {
-    public void setTab(Activity activity, TabLayout tabLayout, List<TabInfo> tabInfoList) {
-        for (TabInfo tabInfo : tabInfoList) {
-            if (tabInfo.getTitleResId() > -1) {
-                setTabTitle(activity, tabLayout, tabInfo.getTitleResId(), tabInfo.getTabIndex());
-            } else if (TextUtils.isEmpty(tabInfo.getImageUrl()) == false) {
-                setTabTitle(activity, tabLayout, tabInfo.getImageUrl(), tabInfo.getTabIndex());
+    public void setTab(Activity activity, TabLayout tabLayout, List<TabData> tabDataList) {
+        for (TabData tabData : tabDataList) {
+            if (tabData.getTitleResId() > -1) {
+                setTabTitle(activity, tabLayout, tabData.getTitleResId(), tabData.getTabIndex());
+            } else if (TextUtils.isEmpty(tabData.getImageUrl()) == false) {
+                setTabTitle(activity, tabLayout, tabData.getImageUrl(), tabData.getTabIndex());
             }
         }
     }

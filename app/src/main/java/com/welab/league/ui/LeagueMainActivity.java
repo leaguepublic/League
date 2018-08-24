@@ -12,15 +12,13 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.widget.TextView;
 
 import com.welab.league.R;
 import com.welab.league.adapter.MainTabFragmentPagerAdapter;
-import com.welab.league.data.TabInfo;
+import com.welab.league.data.TabData;
 import com.welab.league.factory.TabFactory;
 import com.welab.league.listener.OnCallViewListener;
 import com.welab.league.listener.OnResultListener;
@@ -55,15 +53,15 @@ public class LeagueMainActivity extends AppCompatActivity implements NavigationV
         // https://stackoverflow.com/questions/30796710/tablayout-tab-selection - Tab 강제 선택 방법
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
 
-        ArrayList<TabInfo> tabInfoList = new ArrayList<>();
-        tabInfoList.add(new TabInfo(R.string.tab_home, "", VIEW_TYPE_HOME));
-        tabInfoList.add(new TabInfo(R.string.tab_match, "", VIEW_TYPE_MATCH_TEAM));
-        tabInfoList.add(new TabInfo(R.string.tab_team, "", VIEW_TYPE_NEW_JOINING_TEAM));
-        tabInfoList.add(new TabInfo(R.string.tab_match_result_ballot, "", VIEW_TYPE_MATCH_RESULT_BALLOT));
-        tabInfoList.add(new TabInfo(R.string.tab_noti, "", VIEW_TYPE_NOTI));
+        ArrayList<TabData> tabDataList = new ArrayList<>();
+        tabDataList.add(new TabData(R.string.tab_home, "", VIEW_TYPE_HOME));
+        tabDataList.add(new TabData(R.string.tab_match, "", VIEW_TYPE_MATCH_TEAM));
+        tabDataList.add(new TabData(R.string.tab_team, "", VIEW_TYPE_NEW_JOINING_TEAM));
+        tabDataList.add(new TabData(R.string.tab_match_result_ballot, "", VIEW_TYPE_MATCH_RESULT_BALLOT));
+        tabDataList.add(new TabData(R.string.tab_noti, "", VIEW_TYPE_NOTI));
 
         TabFactory tabFactory = new TabFactory();
-        tabFactory.setTab(this, tabLayout, tabInfoList);
+        tabFactory.setTab(this, tabLayout, tabDataList);
 
         // https://stackoverflow.com/questions/30923889/flinging-with-recyclerview-appbarlayout
         // 스크롤 이슈.
@@ -71,9 +69,10 @@ public class LeagueMainActivity extends AppCompatActivity implements NavigationV
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
-        mMainTabFragmentPagerAdapter = new MainTabFragmentPagerAdapter(getSupportFragmentManager(), tabInfoList);
+        mMainTabFragmentPagerAdapter = new MainTabFragmentPagerAdapter(getSupportFragmentManager(), tabDataList.size());
 
         mViewPager = (ViewPager) findViewById(R.id.tab_viewpager);
+        mViewPager.setOffscreenPageLimit(tabDataList.size());
         mViewPager.setAdapter(mMainTabFragmentPagerAdapter);
         mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
 
@@ -111,7 +110,6 @@ public class LeagueMainActivity extends AppCompatActivity implements NavigationV
         // Handle item selection
         switch (item.getItemId()) {
             case R.id.menu_my:
-                Log.e("TAG", "LJS== menu MY ==");
 
                 return true;
         }
@@ -127,10 +125,9 @@ public class LeagueMainActivity extends AppCompatActivity implements NavigationV
     }
 
     @Override
-    public void onCallView(VIEW_TYPE viewType, OnResultListener onResultListener) {
+    public void onCallView(VIEW_TYPE viewType, final ArrayList<String> SELECTED_DATA_LIST, OnResultListener onResultListener) {
         switch (viewType) {
-            case LOCAL_NAME_MENU:
-                final ArrayList<String > SELECT_LOCALNAME_LIST = new ArrayList<>();
+            case LOCAL_NAME_VIEW:
                 ArrayList<String> localNameList = new ArrayList<>();
                 localNameList.add("서대문구");
                 localNameList.add("은평구");
@@ -140,20 +137,19 @@ public class LeagueMainActivity extends AppCompatActivity implements NavigationV
                 localNameList.add("성동구");
                 localNameList.add("마포구");
 
-                mFilterLayout.setData(localNameList, SELECT_LOCALNAME_LIST);
+                mFilterLayout.setData(localNameList, SELECTED_DATA_LIST);
                 mFilterLayout.setOkButtonListener(view -> {
-                    onResultListener.onResult(SELECT_LOCALNAME_LIST);
+                    onResultListener.onResult(SELECTED_DATA_LIST);
                 });
 
                 break;
         }
     }
 
-    // 이게 필요 할까?
     private TabLayout.OnTabSelectedListener mOnTabSelectedListener = new TabLayout.OnTabSelectedListener() {
         @Override
         public void onTabSelected(TabLayout.Tab tab) {
-            Log.e("TAG", "LJS== tab : " + ((TextView) tab.getCustomView()).getText());
+            mViewPager.setCurrentItem(tab.getPosition());
         }
 
         @Override
