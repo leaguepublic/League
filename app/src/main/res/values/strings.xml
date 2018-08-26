@@ -27,6 +27,22 @@
     <string name="sort_high_victory">승률 높은 순</string>
     <string name="sort_good_manner">매너 좋은 순</string>
     <string name="sort_high_select_count">조회수 높은 순</string>
+    <string name="team_name">팀 명칭</string>
+    <string name="team_name_hint">팀 명칭을 입력하세요</string>
+    <string name="ave_age">평균 나이</string>
+    <string name="select_hint">선택하세요</string>
+    <string name="active_ground">활동 구장</string>
+    <string name="unofficial_record">비공인 전적</string>
+    <string name="record_hint">000</string>
+    <string name="match">전</string>
+    <string name="win">승</string>
+    <string name="draw">무</string>
+    <string name="loss">패</string>
+    <string name="uniform_color">유니폼 상의 컬러</string>
+    <string name="key_contacts">대표 연락처</string>
+    <string name="input_only_number">숫자만 입력해 주세요</string>
+    <string name="community">커뮤니티</string>
+    <string name="community_hint">밴드, 카페 등의 커뮤니티 주소 입력</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
