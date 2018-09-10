@@ -35,14 +35,20 @@
     <string name="unofficial_record">비공인 전적</string>
     <string name="record_hint">000</string>
     <string name="match">전</string>
+    <string name="input_match">$s 전</string>
     <string name="win">승</string>
+    <string name="input_win">$s 승</string>
     <string name="draw">무</string>
+    <string name="input_draw">$s 무</string>
     <string name="loss">패</string>
+    <string name="input_loss">$s 패</string>
     <string name="uniform_color">유니폼 상의 컬러</string>
     <string name="key_contacts">대표 연락처</string>
     <string name="input_only_number">숫자만 입력해 주세요</string>
     <string name="community">커뮤니티</string>
     <string name="community_hint">밴드, 카페 등의 커뮤니티 주소 입력</string>
+    <string name="unofficial">비공인</string>
+    <string name="official">공인</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
