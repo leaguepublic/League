@@ -7,6 +7,6 @@
     android:layout_width="8dp"
     android:layout_height="8dp"
     android:layout_marginLeft="6dp"
-    android:src="@drawable/indicator_n">
+    android:src="@drawable/ico_indicator_n">
 
 </ImageView>

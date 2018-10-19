@@ -45,7 +45,7 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".ui.SearchActivity" />
-        <activity android:name=".ui.MakeTeamActivity" />
+        <activity android:name=".ui.CreateTeamActivity"></activity>
         <activity android:name=".ui.TeamInfoActivity"></activity>
     </application>
 

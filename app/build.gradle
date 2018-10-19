@@ -44,6 +44,8 @@ dependencies {
 
     implementation 'com.facebook.android:facebook-login:4.35.0'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
+    implementation 'com.sweetsound.polygongraph:polygongraph:1.0.0'
 }
 repositories {
     mavenCentral()

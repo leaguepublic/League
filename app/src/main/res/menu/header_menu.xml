@@ -5,7 +5,7 @@
     tools:showIn="navigation_view">
 
     <item
-        android:id="@+id/menu_my"
-        android:title="MY"
+        android:id="@+id/create_team"
+        android:icon="@drawable/ico_plus"
         app:showAsAction="always"/>
 </menu>

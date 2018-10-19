@@ -85,9 +85,9 @@ public class ViewPagerViewHolder extends BaseViewHolder<ViewPagerItemInfo> {
 
         for (int i = 0; i < childCount; i++) {
             if (selectIndex == i) {
-                ((ImageView) mIndicatorContainView.getChildAt(i)).setImageResource(R.drawable.indicator_s);
+                ((ImageView) mIndicatorContainView.getChildAt(i)).setImageResource(R.drawable.ico_indicator_s);
             } else {
-                ((ImageView) mIndicatorContainView.getChildAt(i)).setImageResource(R.drawable.indicator_n);
+                ((ImageView) mIndicatorContainView.getChildAt(i)).setImageResource(R.drawable.ico_indicator_n);
             }
         }
     }

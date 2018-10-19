@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ui.MakeTeamActivity">
+    tools:context=".ui.CreateTeamActivity">
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
@@ -70,4 +70,44 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="#FFF4F4F4"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="66dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <ImageView
+            android:layout_width="4dp"
+            android:layout_height="4dp"
+            android:layout_marginLeft="11dp"
+            android:background="#FF43abee"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="30dp"
+            android:textColor="#FF666666"
+            android:textSize="16dp"
+            android:text="@string/ave_age"/>
+
+        <TextView
+            android:id="@+id/ave_age_textview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="#FFADADAD"
+            android:textSize="16dp"
+            android:textColorHint="#FFADADAD"
+            android:hint="@string/select_hint"
+            android:background="@android:color/transparent"/>
+
+        <ImageView
+            android:layout_width="66dp"
+            android:layout_height="66dp"
+            android:src="@drawable/ico_navi_down"
+            android:scaleType="fitCenter"
+            android:background="@null"/>
+    </LinearLayout>
 </LinearLayout>

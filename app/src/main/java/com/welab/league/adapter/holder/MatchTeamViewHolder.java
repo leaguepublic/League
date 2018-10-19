@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.welab.league.R;
 import com.welab.league.api.weblab.response.MatchTeamInfo;
+import com.welab.league.factory.Navigator;
 import com.welab.league.widget.BaseViewHolder;
 
 import java.util.List;
@@ -19,7 +20,7 @@ public class MatchTeamViewHolder extends BaseViewHolder<MatchTeamInfo> {
     private TextView mTeamNameTextView;
     private TextView mMatchgroundTextview;
     private TextView mMatchDateTextview;
-    private TextView mTeamStatusTextView;
+    private TextView mTeamStatsTextView;
     private TextView mTeamAgeTextView;
     private TextView mTeamTypeTextView;
     private TextView mTeamRankingTextView;
@@ -40,7 +41,7 @@ public class MatchTeamViewHolder extends BaseViewHolder<MatchTeamInfo> {
         mTeamNameTextView = (TextView) itemView.findViewById(R.id.team_name_textview);
         mMatchgroundTextview = (TextView) itemView.findViewById(R.id.matchground_textview);
         mMatchDateTextview = (TextView) itemView.findViewById(R.id.match_date_textview);
-        mTeamStatusTextView = (TextView) itemView.findViewById(R.id.team_status_textview);
+        mTeamStatsTextView = (TextView) itemView.findViewById(R.id.team_stats_textview);
         mTeamAgeTextView = (TextView) itemView.findViewById(R.id.team_age_textview);
         mTeamTypeTextView = (TextView) itemView.findViewById(R.id.team_type_textview);
         mTeamRankingTextView = (TextView) itemView.findViewById(R.id.team_ranking_textview);
@@ -51,13 +52,13 @@ public class MatchTeamViewHolder extends BaseViewHolder<MatchTeamInfo> {
     @Override
     public void setData(MatchTeamInfo matchTeamInfo) {
         mMatchButton.setOnClickListener(view -> {
-
+            Navigator.requestMatch(matchTeamInfo.getTeamCode());
         });
 
         mTeamNameTextView.setText(matchTeamInfo.getTeamName());
         mMatchgroundTextview.setText(matchTeamInfo.getMatchGround());
         mMatchDateTextview.setText(matchTeamInfo.getMatchDate());
-        mTeamStatusTextView.setText(getTeamStats(matchTeamInfo.getTeamStats()));
+        mTeamStatsTextView.setText(getTeamStats(matchTeamInfo.getTeamStats()));
         mTeamAgeTextView.setText(matchTeamInfo.getTeamAge());
         mTeamTypeTextView.setText(matchTeamInfo.getTeamType());
         mTeamRankingTextView.setText(mContext.getString(R.string.team_level, matchTeamInfo.getTeamRanking()));

@@ -20,5 +20,9 @@ class Navigator {
                 }
             }
         }
+
+        @JvmStatic fun requestMatch(teamCode:String) {
+
+        }
     }
 }

@@ -37,7 +37,7 @@
         android:id="@+id/filter_view"
         android:layout_width="48dp"
         android:layout_height="match_parent"
-        android:src="@drawable/filter_icon"
+        android:src="@drawable/ico_filter"
         android:background="@null"/>
 
     <ImageView
@@ -51,6 +51,6 @@
         android:id="@+id/search_view"
         android:layout_width="48dp"
         android:layout_height="match_parent"
-        android:src="@drawable/diable_search_icon"
+        android:src="@drawable/ico_diable_search"
         android:background="@null"/>
 </LinearLayout>

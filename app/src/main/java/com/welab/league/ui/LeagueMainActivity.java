@@ -109,8 +109,8 @@ public class LeagueMainActivity extends AppCompatActivity implements NavigationV
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle item selection
         switch (item.getItemId()) {
-            case R.id.menu_my:
-
+            case R.id.create_team:
+                CreateTeamActivity.open(this);
                 return true;
         }
 
@@ -136,6 +136,7 @@ public class LeagueMainActivity extends AppCompatActivity implements NavigationV
                 localNameList.add("노원구");
                 localNameList.add("성동구");
                 localNameList.add("마포구");
+                localNameList.add("용산구");
 
                 mFilterLayout.setData(localNameList, SELECTED_DATA_LIST);
                 mFilterLayout.setOkButtonListener(view -> {

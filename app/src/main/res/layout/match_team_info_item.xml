@@ -61,7 +61,7 @@
             app:layout_constraintLeft_toRightOf="@+id/match_date_textview" />
 
         <TextView
-            android:id="@+id/team_status_textview"
+            android:id="@+id/team_stats_textview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="14dp"
@@ -74,7 +74,7 @@
             android:layout_height="22dp"
             android:background="#FFDBDBDB"
             app:layout_constraintTop_toBottomOf="@+id/match_date_textview"
-            app:layout_constraintLeft_toRightOf="@+id/team_status_textview"/>
+            app:layout_constraintLeft_toRightOf="@+id/team_stats_textview"/>
 
         <TextView
             android:id="@+id/team_age_textview"
@@ -82,7 +82,7 @@
             android:layout_height="wrap_content"
             android:textSize="14dp"
             android:textColor="#FF666666"
-            app:layout_constraintBaseline_toBaselineOf="@+id/team_status_textview"
+            app:layout_constraintBaseline_toBaselineOf="@+id/team_stats_textview"
             app:layout_constraintLeft_toRightOf="@+id/first_divider"/>
 
         <ImageView
@@ -99,7 +99,7 @@
             android:layout_height="wrap_content"
             android:textSize="14dp"
             android:textColor="#FF666666"
-            app:layout_constraintBaseline_toBaselineOf="@+id/team_status_textview"
+            app:layout_constraintBaseline_toBaselineOf="@+id/team_stats_textview"
             app:layout_constraintLeft_toRightOf="@+id/second_divider"/>
 
         <RatingBar android:id="@+id/team_manner_ratingbar"
@@ -108,7 +108,7 @@
             android:layout_marginTop="5dp"
             android:numStars="5"
             style="@style/customRatingBar"
-            app:layout_constraintTop_toBottomOf="@+id/team_status_textview"
+            app:layout_constraintTop_toBottomOf="@+id/team_stats_textview"
             app:layout_constraintLeft_toLeftOf="parent" />
 
         <TextView
@@ -118,7 +118,7 @@
             android:layout_marginLeft="7dp"
             android:textSize="14dp"
             android:textColor="#FF666666"
-            app:layout_constraintTop_toBottomOf="@+id/team_status_textview"
+            app:layout_constraintTop_toBottomOf="@+id/team_stats_textview"
             app:layout_constraintLeft_toRightOf="@+id/team_manner_ratingbar"/>
     </android.support.constraint.ConstraintLayout>
 
@@ -134,5 +134,5 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         android:text="@string/tab_match"
-        android:background="@drawable/rectangle_normal"/>
+        android:background="@drawable/match_button_background"/>
 </android.support.constraint.ConstraintLayout>
