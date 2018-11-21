@@ -31,7 +31,7 @@ public class MoreViewHolder extends BaseViewHolder<MoreInfo> {
     @Override
     public void setData(final MoreInfo moreInfo) {
         mRootView.setOnClickListener(view -> {
-            Navigator.callActivity(mContext, moreInfo.getCallType());
+            Navigator.callActivity(mContext, moreInfo.getTargetType());
         });
     }
 }

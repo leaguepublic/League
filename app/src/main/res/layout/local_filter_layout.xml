@@ -48,7 +48,7 @@
         android:background="#FFF4F4F4"/>
 
     <ImageButton
-        android:id="@+id/search_view"
+        android:id="@+id/search_imagebutton"
         android:layout_width="48dp"
         android:layout_height="match_parent"
         android:src="@drawable/ico_diable_search"

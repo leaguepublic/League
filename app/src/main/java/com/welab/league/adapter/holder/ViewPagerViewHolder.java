@@ -21,6 +21,8 @@ import java.util.List;
 
 public class ViewPagerViewHolder extends BaseViewHolder<ViewPagerItemInfo> {
 
+    private final int MAX_DISPLAY_COUNT = 2;
+
     private TextView mTitleTextView;
     private ViewPager mViewPager;
     private ViewPagerAdapter mViewPagerAdapter;
@@ -60,17 +62,22 @@ public class ViewPagerViewHolder extends BaseViewHolder<ViewPagerItemInfo> {
     @Override
     public void setListData(List<ViewPagerItemInfo> listDataList) {
         mListDataList.clear();
-        mListDataList.addAll(listDataList);
+
+        for (int i = 0; i < MAX_DISPLAY_COUNT; i++) {
+            mListDataList.add(listDataList.get(i));
+        }
+
+        int displayCount = mListDataList.size();
 
         mIndicatorContainView.removeAllViews();
 
-        for (int i = 0; i < listDataList.size(); i++) {
+        for (int i = 0; i < displayCount; i++) {
             mIndicatorContainView.addView(LayoutInflater.from(mIndicatorContainView.getContext()).inflate(R.layout.indicator_icon, mIndicatorContainView, false));
         }
 
         setIndicator(0);
 
-        mViewPager.setOffscreenPageLimit(listDataList.size());
+        mViewPager.setOffscreenPageLimit(displayCount);
 
         if (mViewPagerAdapter != null) {
             mViewPagerAdapter.notifyDataSetChanged();

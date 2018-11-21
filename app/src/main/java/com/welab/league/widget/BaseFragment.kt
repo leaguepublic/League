@@ -4,7 +4,13 @@ import android.support.v4.app.Fragment
 
 open class BaseFragment<T>:Fragment() {
 
-    open fun setData(data: T) {}
+    private var mData:T? = null
 
-    open fun setData(mutableList: MutableList<T>) {}
+    fun setData(data: T) {
+        mData = data;
+    }
+
+    fun getData(): T? {
+        return mData
+    }
 }

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="47dp"
+    android:orientation="horizontal">
+
+    <Button
+        android:id="@+id/cancle_button"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:background="@null"
+        android:textSize="15dp"
+        android:textColor="#FF333333"
+        android:text="@string/cancel"/>
+
+    <ImageView
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:background="#16000000"/>
+
+    <Button
+        android:id="@+id/ok_button"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:background="@null"
+        android:text="@string/ok"
+        android:textSize="15dp"
+        android:textColor="#FF333333"/>
+
+</LinearLayout>

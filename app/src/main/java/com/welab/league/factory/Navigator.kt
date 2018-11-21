@@ -19,6 +19,8 @@ class Navigator {
                     Log.e("TAG", "LJS== call New Joinning Team Activity ==");
                 }
             }
+
+            Log.e("TAG", "LJS== type : " + type);
         }
 
         @JvmStatic fun requestMatch(teamCode:String) {

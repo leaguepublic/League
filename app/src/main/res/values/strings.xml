@@ -10,6 +10,8 @@
     <string name="drawer_open">drawer open</string>
     <string name="drawer_close">drawer close</string>
     <string name="delete_whole_search_keyword">검색어 전체 삭제</string>
+    <string name="input_search_keyword">검색어 입력</string>
+    <string name="not_exists_recent_keyword">최근 검색어 내역이 없습니다.</string>
     <string name="ok">확인</string>
     <string name="cancel">취소</string>
     <string name="tab_home">홈</string>
@@ -49,6 +51,9 @@
     <string name="community_hint">밴드, 카페 등의 커뮤니티 주소 입력</string>
     <string name="unofficial">비공인</string>
     <string name="official">공인</string>
+    <string name="facebook_login">페이스북 로그인</string>
+    <string name="naver_login">네이버 로그인</string>
+    <string name="kakao_login">카카오 로그인</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

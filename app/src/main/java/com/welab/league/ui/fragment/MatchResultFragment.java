@@ -12,8 +12,6 @@ import com.welab.league.api.weblab.response.matchresult.MatchResult;
 import com.welab.league.api.weblab.response.matchresult.Team;
 import com.welab.league.widget.BaseFragment;
 
-import org.jetbrains.annotations.NotNull;
-
 import java.util.List;
 
 public class MatchResultFragment extends BaseFragment<MatchResult> {
@@ -27,8 +25,6 @@ public class MatchResultFragment extends BaseFragment<MatchResult> {
     private TextView mRightTeamPointTextView;
     private TextView mMatchDateTextView;
     private TextView mMatchGroundTextView;
-
-    private MatchResult mMatchResult;
 
     public MatchResultFragment() {
     }
@@ -48,11 +44,12 @@ public class MatchResultFragment extends BaseFragment<MatchResult> {
         mMatchDateTextView = (TextView) rootView.findViewById(R.id.match_date_textview);
         mMatchGroundTextView = (TextView) rootView.findViewById(R.id.match_ground_textview);
 
+        MatchResult matchResult = getData();
 
-        mMatchDateTextView.setText(mMatchResult.getMatchDate());
-        mMatchGroundTextView.setText(mMatchResult.getMatchGround());
+        mMatchDateTextView.setText(matchResult.getMatchDate());
+        mMatchGroundTextView.setText(matchResult.getMatchGround());
 
-        List<Team> teamList = mMatchResult.getTeams();
+        List<Team> teamList = matchResult.getTeams();
         Team leftTeamInfo = teamList.get(LEFT_TEAM_INDEX);
         Team rightTeamInfo = teamList.get(RIGHT_TEAM_INDEX);
 
@@ -63,11 +60,6 @@ public class MatchResultFragment extends BaseFragment<MatchResult> {
         setTeamInfo(mRigthTeamInfoView, rightTeamInfo);
 
         return rootView;
-    }
-
-    @Override
-    public void setData(@NotNull MatchResult matchResult) {
-        mMatchResult = matchResult;
     }
 
     private void setTeamInfo(View teamInfoLayout, Team teamInfo) {

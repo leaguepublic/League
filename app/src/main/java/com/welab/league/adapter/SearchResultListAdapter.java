@@ -2,6 +2,7 @@ package com.welab.league.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -46,7 +47,7 @@ public class SearchResultListAdapter extends RecyclerView.Adapter {
         viewHolder = mViewFactory.getViewHodler(mContext, parent, viewType);
 
         if (viewHolder == null) {
-            viewHolder = new KeywordViewHolder(View.inflate(mContext, R.layout.recent_keyword_list_item, parent));
+            viewHolder = new KeywordViewHolder(LayoutInflater.from(mContext).inflate(R.layout.recent_keyword_list_item, parent, false));
         }
 
         return viewHolder;

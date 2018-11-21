@@ -44,7 +44,7 @@ class DataConverter {
                             dataList.removeAt(maxCount)
                         }
 
-                        dataList.add(MoreInfo(dataList.get(0).getType()))
+                        dataList.add(MoreInfo(dataList.get(0).getType(), ViewFactory.VIEW_TYPE_MORE))
 
                         break
                     }

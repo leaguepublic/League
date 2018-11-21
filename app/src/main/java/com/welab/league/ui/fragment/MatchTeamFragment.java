@@ -1,20 +1,13 @@
 package com.welab.league.ui.fragment;
 
 
-import android.os.Bundle;
 import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
 import com.welab.league.api.ApiManager;
 import com.welab.league.api.weblab.response.BaseItemInfo;
 import com.welab.league.api.weblab.response.DividerInfo;
 import com.welab.league.api.weblab.response.ResTabHome;
 import com.welab.league.factory.DataConverter;
-import com.welab.league.widget.BaseFragment;
-
-import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,10 +33,10 @@ public class MatchTeamFragment extends CommonListFragment {
                     ArrayList<BaseItemInfo> dividerInfoList = new ArrayList<>();
                     dividerInfoList.add(new DividerInfo());
 
-                    mHomeItemInfoList.add(dividerInfoList);
+                    mListItemInfoList.add(dividerInfoList);
                     for(List<BaseItemInfo> element : resTabHome.getResponse().getList()) {
                         if (element != null) {
-                            mHomeItemInfoList.add(DataConverter.convert(getContext(), element));
+                            mListItemInfoList.add(DataConverter.convert(getContext(), element));
                         }
                     }
 

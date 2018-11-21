@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,18 +13,11 @@ import com.welab.league.R;
 import com.welab.league.adapter.HomeFragmentListAdapter;
 import com.welab.league.api.ApiManager;
 import com.welab.league.api.weblab.response.BaseItemInfo;
-import com.welab.league.api.weblab.response.DividerInfo;
-import com.welab.league.api.weblab.response.ResTabHome;
-import com.welab.league.factory.DataConverter;
 import com.welab.league.util.Utils;
 import com.welab.league.widget.BaseFragment;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public abstract class CommonListFragment extends BaseFragment {
 
@@ -33,7 +25,7 @@ public abstract class CommonListFragment extends BaseFragment {
 
     protected HomeFragmentListAdapter mHomeFragmentListAdapter;
 
-    protected List<List<BaseItemInfo>> mHomeItemInfoList = new ArrayList<List<BaseItemInfo>>();
+    protected List<List<BaseItemInfo>> mListItemInfoList = new ArrayList<List<BaseItemInfo>>();
 
     public CommonListFragment() {
     }
@@ -41,7 +33,7 @@ public abstract class CommonListFragment extends BaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        mHomeFragmentListAdapter = new HomeFragmentListAdapter(getContext(), mHomeItemInfoList);
+        mHomeFragmentListAdapter = new HomeFragmentListAdapter(getContext(), mListItemInfoList);
 
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL);
         dividerItemDecoration.setDrawable(Utils.getDrawable(getContext(), R.drawable.recyclerview_main_divider));

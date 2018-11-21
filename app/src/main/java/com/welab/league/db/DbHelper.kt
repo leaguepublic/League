@@ -3,9 +3,9 @@ package com.welab.league.db
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
-import com.welab.league.db.DbUtils.Companion.COLUMNS_KEYWORD
 import com.welab.league.db.DbUtils.Companion.COLUMN_DATE
 import com.welab.league.db.DbUtils.Companion.COLUMN_ID
+import com.welab.league.db.DbUtils.Companion.COLUMN_KEYWORD
 import com.welab.league.db.DbUtils.Companion.TABLE_NAME
 
 private val DB_VERSION: Int = 1
@@ -15,7 +15,7 @@ class DbHelper(context: Context): SQLiteOpenHelper(context, DB_NAME, null, DB_VE
 
     val CREATE_TABLE_SEARCH_KEYWORD: String = "CREATE TABLE ${TABLE_NAME} (" +
             "${COLUMN_ID} INTEGER PRIMARY KEY AUTOINCREMENT," +
-            "${COLUMNS_KEYWORD} TEXT," +
+            "${COLUMN_KEYWORD} TEXT," +
             "${COLUMN_DATE} TEXT" +
             ")"
 

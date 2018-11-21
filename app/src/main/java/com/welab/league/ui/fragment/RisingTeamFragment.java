@@ -2,7 +2,6 @@ package com.welab.league.ui.fragment;
 
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,8 +25,6 @@ public class RisingTeamFragment extends BaseFragment<RisingTeam> {
     private Button mMatchButton;
     private PolygonGraphView mPolygonGraphView;
 
-    private RisingTeam mRisingTeam;
-
     public RisingTeamFragment() {
     }
 
@@ -43,20 +40,22 @@ public class RisingTeamFragment extends BaseFragment<RisingTeam> {
         mTeamMemberCountTextView = (TextView) rootView.findViewById(R.id.team_member_count_textview);
         mTeamAgeTextView = (TextView) rootView.findViewById(R.id.team_age_textview);
         mMatchButton = (Button) rootView.findViewById(R.id.match_button);
-//        mPolygonGraphView = (PolygonGraphView) rootView.findViewById(R.id.polygongraphview);
+        mPolygonGraphView = (PolygonGraphView) rootView.findViewById(R.id.polygongraphview);
 
-        Log.e("TAG", "LJS== mRisingTeam : " + mRisingTeam);
+        final RisingTeam risingTeam = getData();
 
         mMatchButton.setOnClickListener(view -> {
-            Navigator.requestMatch(mRisingTeam.getTeamCode());
+            Navigator.requestMatch(risingTeam.getTeamCode());
         });
 
-        mTeamNameTextView.setText(mRisingTeam.getTeamName());
-        mTeamMemberCountTextView.setText(mRisingTeam.getTeamMemberCount());
-        mTeamAgeTextView.setText(mRisingTeam.getTeamAge());
+        mTeamNameTextView.setText(risingTeam.getTeamName());
+        mTeamMemberCountTextView.setText(risingTeam.getTeamMemberCount());
+        mTeamAgeTextView.setText(risingTeam.getTeamAge());
 
-        List<String> teamStatsList = mRisingTeam.getTeamStats();
+        List<String> teamStatsList = risingTeam.getTeamStats();
         mTeamStatsTextView.setText(getContext().getString(R.string.team_stats, teamStatsList.get(0), teamStatsList.get(1), teamStatsList.get(2)));
+
+        mPolygonGraphView.setGraphAngleList(new float[]{2300, 1400, 5300, 8700, 2400});
 
         return rootView;
     }
@@ -65,10 +64,5 @@ public class RisingTeamFragment extends BaseFragment<RisingTeam> {
     public void onResume() {
         super.onResume();
 
-    }
-
-    @Override
-    public void setData(RisingTeam risingTeam) {
-        mRisingTeam = risingTeam;
     }
 }

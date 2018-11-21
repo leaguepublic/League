@@ -33,10 +33,10 @@ public class HomeFragment extends CommonListFragment {
                     ArrayList<BaseItemInfo> dividerInfoList = new ArrayList<>();
                     dividerInfoList.add(new DividerInfo());
 
-                    mHomeItemInfoList.add(dividerInfoList);
+                    mListItemInfoList.add(dividerInfoList);
                     for(List<BaseItemInfo> element : resTabHome.getResponse().getList()) {
                         if (element != null) {
-                            mHomeItemInfoList.add(DataConverter.convert(getContext(), element));
+                            mListItemInfoList.add(DataConverter.convert(getContext(), element));
                         }
                     }
 

@@ -4,30 +4,61 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingLeft="50dp"
+    android:paddingRight="50dp"
     android:orientation="vertical">
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="142dp"
+        android:layout_marginBottom="160dp"
         android:layout_gravity="center_horizontal"
         android:src="@drawable/league"/>
 
     <Button
         android:id="@+id/naver_login_button"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="52dp"
+        android:gravity="center_vertical|left"
+        android:paddingLeft="47dp"
+        android:drawablePadding="30dp"
+        android:drawableLeft="@drawable/ioc_naver"
+        android:textSize="16dp"
+        android:textColor="#FFFFFFFF"
+        android:text="@string/naver_login"
+        android:background="#FF00C73C"
         />
 
     <Button
         android:id="@+id/kakao_login_button"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="52dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:gravity="center_vertical|left"
+        android:paddingLeft="45dp"
+        android:drawablePadding="28dp"
+        android:drawableLeft="@drawable/kakao_icon"
+        android:textSize="16dp"
+        android:textColor="#FF381E1F"
+        android:text="@string/kakao_login"
+        android:background="#FFE7D933"
+        />
 
     <Button
         android:id="@+id/facebook_login_button"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="52dp"
+        android:gravity="center_vertical|left"
+        android:paddingLeft="49dp"
+        android:drawablePadding="34dp"
+        android:drawableLeft="@drawable/facebook_icon"
+        android:textSize="16dp"
+        android:textColor="#FFFFFFFF"
+        android:text="@string/facebook_login"
+        android:background="#FF37549B"
+        />
 
     <!--
     <com.nhn.android.naverlogin.ui.view.OAuthLoginButton

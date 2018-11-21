@@ -93,11 +93,11 @@ public class FilterLayout extends ConstraintLayout {
             rowLayout.addView(localNameCheckBox);
         }
 
-        int emptyButtonCount = MAX_ROW_COUNT - (localNameList.size() % MAX_ROW_COUNT);
+        int emptyButtonCount = localNameList.size() % MAX_ROW_COUNT;
 
         for (int i = 0; i < emptyButtonCount; i++) {
             localNameCheckBox = (CheckBox) LayoutInflater.from(getContext()).inflate(R.layout.local_name_layout, rowLayout, false);
-            localNameCheckBox.setVisibility(View.INVISIBLE);
+//            localNameCheckBox.setVisibility(View.INVISIBLE);
 
             rowLayout.addView(localNameCheckBox);
         }

@@ -1,11 +1,10 @@
 package com.welab.league.api.weblab.response
 
-import com.welab.league.factory.ViewFactory
-
-data class MoreInfo(val callType:Int
+data class MoreInfo(val targetType:Int,
+                    val moreType:Int
                       ): BaseItemInfo() {
 
     override fun getType(): Int {
-        return ViewFactory.VIEW_TYPE_MORE
+        return moreType
     }
 }

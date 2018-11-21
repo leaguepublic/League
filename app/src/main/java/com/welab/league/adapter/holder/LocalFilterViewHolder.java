@@ -19,6 +19,7 @@ import com.welab.league.data.ReloadData;
 import com.welab.league.listener.OnCallViewListener;
 import com.welab.league.listener.OnReloadListener;
 import com.welab.league.listener.OnResultListener;
+import com.welab.league.ui.SearchActivity;
 import com.welab.league.util.Utils;
 import com.welab.league.widget.BaseViewHolder;
 
@@ -103,7 +104,10 @@ public class LocalFilterViewHolder extends BaseViewHolder<LocalFilterItemInfo> {
             }
         });
 
-        mSearchView = itemView.findViewById(R.id.search_view);
+        mSearchView = itemView.findViewById(R.id.search_imagebutton);
+        mSearchView.setOnClickListener(view -> {
+            SearchActivity.open(mContext);
+        });
     }
 
     public void setData(LocalFilterItemInfo localFilterItemInfo) {
